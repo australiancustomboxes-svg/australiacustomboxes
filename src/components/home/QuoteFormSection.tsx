@@ -101,8 +101,13 @@ export const QuoteFormSection: React.FC = () => {
     <section
       id="get-a-quote"
       aria-labelledby="quote-heading"
-      className="w-full bg-white py-14 sm:py-20 lg:py-24 border-t border-b border-[#E5EBF5] shadow-[0_8px_30px_-6px_rgba(4,31,73,0.06)] relative z-10"
+      className="w-full bg-white py-14 sm:py-20 lg:py-24 border-t border-b border-[#E5EBF5] shadow-[0_24px_48px_-8px_rgba(4,31,73,0.16),0_12px_24px_-4px_rgba(4,31,73,0.10)] relative z-20"
     >
+      {/* Bottom Ambient Shadow Drop matching Figma screenshot */}
+      <div
+        className="absolute top-full left-0 right-0 h-14 bg-gradient-to-b from-[#041F49]/[0.10] via-[#041F49]/[0.03] to-transparent pointer-events-none"
+        aria-hidden="true"
+      />
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14 items-start">
           {/* =========================================================

@@ -19,6 +19,9 @@ export default function Home() {
 
       {/* 4. Free Quote Request Form Section: "Get your custom packaging quote." */}
       <QuoteFormSection />
+
+      {/* Spacing for bottom section drop shadow */}
+      <div className="w-full h-14 bg-white" aria-hidden="true" />
     </>
   );
 }
