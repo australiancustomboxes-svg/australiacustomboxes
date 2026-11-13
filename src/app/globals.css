@@ -177,6 +177,12 @@ body {
   will-change: transform;
 }
 
+/* Mobile SubHeader Infinite Marquee */
+.animate-subbar-marquee {
+  animation: heroMarqueeLeft 22s linear infinite;
+  will-change: transform;
+}
+
 .animate-badge-spin {
   animation: spinBadgeSlow 24s linear infinite;
   transform-origin: 62px 62px;
@@ -194,6 +200,8 @@ body {
 .animate-hero-scroll-down-2:hover,
 .animate-hero-marquee:hover,
 .animate-mobile-conveyor:hover,
-.animate-mobile-conveyor:active {
+.animate-mobile-conveyor:active,
+.animate-subbar-marquee:hover,
+.animate-subbar-marquee:active {
   animation-play-state: paused;
 }
