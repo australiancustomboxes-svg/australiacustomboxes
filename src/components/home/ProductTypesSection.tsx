@@ -178,7 +178,7 @@ export const ProductTypesSection: React.FC = () => {
     <section
       id="product-types"
       aria-labelledby="product-types-heading"
-      className="w-full bg-[#FFFFFF] py-12 sm:py-16 lg:py-20 border-b border-[#E5EBF5]"
+      className="w-full bg-[#F8FAFD] py-14 sm:py-18 lg:py-24 border-b border-[#E2E8F0]"
     >
       <div className="site-container">
         {/* 
@@ -210,18 +210,18 @@ export const ProductTypesSection: React.FC = () => {
           2. Product Cards Grid:
           Desktop: 3 columns | Tablet: 2 columns | Mobile: 1 column
         */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8">
           {productTypesData.map((item) => (
             <article
               key={item.id}
-              className="flex flex-col justify-between rounded-[16px] overflow-hidden bg-white border border-[#E5EBF5] shadow-[0_4px_18px_-4px_rgba(4,31,73,0.06)] hover:shadow-[0_14px_34px_-6px_rgba(4,31,73,0.13)] transition-all duration-300 group hover:-translate-y-1"
+              className="flex flex-col justify-between rounded-[18px] overflow-hidden bg-white border border-[#DCE4EF] shadow-[0_12px_36px_-6px_rgba(4,31,73,0.14),0_4px_16px_-2px_rgba(4,31,73,0.06)] hover:shadow-[0_24px_54px_-8px_rgba(4,31,73,0.24),0_8px_24px_-4px_rgba(4,31,73,0.12)] transition-all duration-300 group hover:-translate-y-1.5"
             >
               {/* Card Image Area with Top-Left Highlight Badge - Edge to Edge 100% Matching Image Size */}
               <div className="relative w-full aspect-square overflow-hidden bg-[#F6F4F0]">
                 {/* Gold Highlight Badge */}
-                <div className="absolute top-3 left-3 sm:top-3.5 sm:left-3.5 z-10">
+                <div className="absolute top-3.5 left-3.5 z-10">
                   <span
-                    className="inline-flex items-center px-2.5 py-1 rounded-full text-[9.5px] sm:text-[10px] font-extrabold tracking-wider text-[#041F49] uppercase shadow-xs select-none"
+                    className="inline-flex items-center px-3 py-1 rounded-full text-[9.5px] sm:text-[10px] font-extrabold tracking-wider text-[#041F49] uppercase shadow-[0_2px_10px_rgba(0,0,0,0.18)] select-none"
                     style={{
                       backgroundColor: "#F2B329",
                       fontFamily: "var(--font-archivo), 'Archivo', sans-serif",
@@ -242,12 +242,12 @@ export const ProductTypesSection: React.FC = () => {
               </div>
 
               {/* Card Body Content */}
-              <div className="p-4 sm:p-5 lg:p-6 flex flex-col flex-1 justify-between bg-white">
+              <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between bg-white">
                 <div>
                   {/* Metadata Row: MOQ + Lead Time */}
                   <div className="flex items-center justify-between text-[11px] sm:text-[11.5px] text-[#082E63]/65 font-medium mb-1.5">
-                    <span className="font-semibold text-[#082E63]/85">{item.moq}</span>
-                    <span>{item.leadTime}</span>
+                    <span className="font-semibold text-[#082E63]/90">{item.moq}</span>
+                    <span className="font-medium text-[#082E63]/70">{item.leadTime}</span>
                   </div>
 
                   {/* Product Title */}
@@ -275,7 +275,7 @@ export const ProductTypesSection: React.FC = () => {
                     {item.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2.5 py-0.5 rounded-full bg-[#F0F4FA] border border-[#E2E8F4] text-[#082E63]/85 text-[10.5px] sm:text-[11px] font-medium"
+                        className="px-2.5 py-1 rounded-full bg-[#F0F4FA] border border-[#DCE4EF] text-[#082E63]/85 text-[10.5px] sm:text-[11px] font-medium shadow-2xs"
                         style={{
                           fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
                         }}
@@ -287,7 +287,7 @@ export const ProductTypesSection: React.FC = () => {
                 </div>
 
                 {/* Card Action Footer: 3D Mockup Note + Customise Button */}
-                <div className="pt-3 border-t border-[#F0F4FA] flex items-center justify-between gap-2">
+                <div className="pt-3.5 border-t border-[#F0F4FA] flex items-center justify-between gap-2">
                   <span
                     className="text-[11.5px] sm:text-[12px] text-[#082E63]/60 font-medium select-none"
                     style={{
@@ -299,7 +299,7 @@ export const ProductTypesSection: React.FC = () => {
 
                   <Link
                     href={item.href}
-                    className="inline-flex items-center gap-1.5 h-[34px] sm:h-[36px] px-3.5 sm:px-4 rounded-full bg-[#041F49] text-white hover:bg-[#F2B329] hover:text-[#041F49] text-[11.5px] sm:text-[12px] font-bold tracking-wide transition-all duration-200 active:scale-95 shadow-xs"
+                    className="inline-flex items-center gap-1.5 h-[36px] sm:h-[38px] px-4 rounded-full bg-[#041F49] text-white hover:bg-[#F2B329] hover:text-[#041F49] text-[12px] font-bold tracking-wide transition-all duration-200 active:scale-95 shadow-[0_4px_14px_rgba(4,31,73,0.25)] hover:shadow-[0_6px_20px_rgba(242,179,41,0.45)]"
                     style={{
                       fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
                     }}
