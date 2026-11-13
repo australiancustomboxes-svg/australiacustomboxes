@@ -3,6 +3,7 @@ import {
   BenefitsSection,
   ProductTypesSection,
   QuoteFormSection,
+  BoxStylesSection,
 } from "@/components/home";
 
 export default function Home() {
@@ -19,6 +20,9 @@ export default function Home() {
 
       {/* 4. Free Quote Request Form Section: "Get your custom packaging quote." */}
       <QuoteFormSection />
+
+      {/* 5. Box Styles Showcase: "Packaging designed around your brand." */}
+      <BoxStylesSection />
 
       {/* Spacing for bottom section drop shadow */}
       <div className="w-full h-14 bg-white" aria-hidden="true" />

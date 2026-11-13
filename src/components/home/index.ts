@@ -9,3 +9,4 @@ export * from "./HeroMobileSlider";
 export * from "./HeroMobileView";
 export * from "./ProductTypesSection";
 export * from "./QuoteFormSection";
+export * from "./BoxStylesSection";
