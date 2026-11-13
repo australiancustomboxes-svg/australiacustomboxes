@@ -105,17 +105,18 @@ export const QuoteFormSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14 items-start">
           {/* =========================================================
               LEFT COLUMN: Brand Value Proposition, Steps & Contacts
+              100% Faithful to Figma Screenshot
              ========================================================= */}
           <div className="lg:col-span-5 flex flex-col justify-between h-full pt-1">
             <div>
               {/* Eyebrow */}
-              <div className="flex items-center gap-2 mb-3 select-none">
+              <div className="flex items-center gap-2 mb-3.5 select-none">
                 <div
                   className="w-[6px] h-[6px] bg-[#F2B329] rotate-45 shrink-0"
                   aria-hidden="true"
                 />
                 <span
-                  className="text-[11px] font-bold uppercase tracking-[2.4px] text-[#082E63]/75"
+                  className="text-[11px] font-bold uppercase tracking-[2.6px] text-[#082E63]/75"
                   style={{
                     fontFamily:
                       "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
@@ -125,30 +126,38 @@ export const QuoteFormSection: React.FC = () => {
                 </span>
               </div>
 
-              {/* Headline */}
+              {/* Headline: 3-line Figtree typographic lockup matching Figma */}
               <h2
                 id="quote-heading"
-                className="text-[34px] sm:text-[44px] lg:text-[48px] font-extrabold text-[#082E63] tracking-[-1.5px] leading-[1.08] mb-4"
+                className="text-[36px] sm:text-[44px] lg:text-[48px] xl:text-[52px] font-normal text-[#082E63] tracking-[-0.02em] leading-[1.08] mb-6"
                 style={{
-                  fontFamily: "var(--font-archivo), 'Archivo', sans-serif",
-                  fontWeight: 800,
+                  fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
                 }}
               >
-                Get your custom{" "}
+                Get your custom
+                <br />
                 <span
-                  className="italic font-normal text-[#F2B329]"
+                  className="italic text-[#F2B329]"
                   style={{
                     fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
                   }}
                 >
                   packaging
-                </span>{" "}
-                <span className="text-[#F2B329]">quote.</span>
+                </span>
+                <br />
+                <span
+                  className="italic text-[#F2B329]"
+                  style={{
+                    fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
+                  }}
+                >
+                  quote.
+                </span>
               </h2>
 
               {/* Subtitle */}
               <p
-                className="text-[14.5px] sm:text-[15.5px] text-[#082E63]/75 leading-[1.6] font-normal mb-8 max-w-[440px]"
+                className="text-[14px] sm:text-[15px] lg:text-[15.5px] text-[#082E63]/75 leading-[1.62] font-normal mb-8 sm:mb-10 max-w-[430px]"
                 style={{
                   fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
                 }}
@@ -157,77 +166,77 @@ export const QuoteFormSection: React.FC = () => {
                 with pricing, a material recommendation and your free 3D mockup.
               </p>
 
-              {/* Numbered Steps: 01, 02, 03 */}
-              <div className="space-y-5 mb-10 select-none max-w-[420px]">
+              {/* Numbered Steps: 01, 02, 03 (Stacked vertically as in Figma) */}
+              <div className="space-y-6 sm:space-y-7 mb-10 sm:mb-12 select-none max-w-[420px]">
                 {/* Step 01 */}
-                <div className="flex items-start gap-4">
+                <div>
                   <span
-                    className="text-[#F2B329] text-[13px] font-extrabold tracking-wide shrink-0 pt-0.5"
+                    className="block text-[#F2B329] text-[13px] sm:text-[14px] font-bold tracking-wide mb-1"
                     style={{
-                      fontFamily: "var(--font-archivo), 'Archivo', sans-serif",
+                      fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
                     }}
                   >
                     01
                   </span>
-                  <p className="text-[13.5px] sm:text-[14px] text-[#082E63]/85 leading-[1.48] font-normal">
+                  <p className="text-[13.5px] sm:text-[14px] text-[#082E63]/85 leading-[1.5] font-normal">
                     We review your specs and suggest the best board, style and
                     print.
                   </p>
                 </div>
 
                 {/* Step 02 */}
-                <div className="flex items-start gap-4">
+                <div>
                   <span
-                    className="text-[#F2B329] text-[13px] font-extrabold tracking-wide shrink-0 pt-0.5"
+                    className="block text-[#F2B329] text-[13px] sm:text-[14px] font-bold tracking-wide mb-1"
                     style={{
-                      fontFamily: "var(--font-archivo), 'Archivo', sans-serif",
+                      fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
                     }}
                   >
                     02
                   </span>
-                  <p className="text-[13.5px] sm:text-[14px] text-[#082E63]/85 leading-[1.48] font-normal">
+                  <p className="text-[13.5px] sm:text-[14px] text-[#082E63]/85 leading-[1.5] font-normal">
                     You get a clear quote, with bulk pricing tiers if you need
                     them.
                   </p>
                 </div>
 
                 {/* Step 03 */}
-                <div className="flex items-start gap-4">
+                <div>
                   <span
-                    className="text-[#F2B329] text-[13px] font-extrabold tracking-wide shrink-0 pt-0.5"
+                    className="block text-[#F2B329] text-[13px] sm:text-[14px] font-bold tracking-wide mb-1"
                     style={{
-                      fontFamily: "var(--font-archivo), 'Archivo', sans-serif",
+                      fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
                     }}
                   >
                     03
                   </span>
-                  <p className="text-[13.5px] sm:text-[14px] text-[#082E63]/85 leading-[1.48] font-normal">
+                  <p className="text-[13.5px] sm:text-[14px] text-[#082E63]/85 leading-[1.5] font-normal">
                     Approve your 3D mockup and proof, and production begins.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Direct Contact Links */}
-            <div className="pt-6 border-t border-[#E5EBF5] space-y-2.5 text-[#082E63] text-[13px] font-semibold">
+            {/* Direct Contact Links (No dividing line, clean spacing as in Figma) */}
+            <div className="space-y-3.5 text-[#082E63] text-[13.5px] font-medium">
               <a
                 href="tel:0280000000"
-                className="flex items-center gap-2.5 hover:text-[#F2B329] transition-colors"
+                className="flex items-center gap-2.5 hover:text-[#F2B329] transition-colors font-semibold"
               >
-                <Phone className="w-3.5 h-3.5 text-[#082E63]/60 stroke-[2.2]" />
+                <Phone className="w-4 h-4 text-[#082E63]/80 stroke-[2]" />
                 <span>Contact our team</span>
               </a>
 
               <a
                 href="mailto:info@australiancustomboxes.com.au"
-                className="flex items-center gap-2.5 hover:text-[#F2B329] transition-colors"
+                className="flex items-center gap-2.5 hover:text-[#F2B329] transition-colors font-semibold"
               >
-                <Mail className="w-3.5 h-3.5 text-[#082E63]/60 stroke-[2.2]" />
+                <Mail className="w-4 h-4 text-[#082E63]/80 stroke-[2]" />
                 <span>Request a quote</span>
               </a>
 
-              <div className="flex items-center gap-2.5 text-[#082E63]/70 font-medium">
-                <MapPin className="w-3.5 h-3.5 text-[#082E63]/60 stroke-[2.2]" />
+              <div className="flex items-center gap-2.5 text-[#082E63]/75 font-normal">
+                <MapPin className="w-4 h-4 text-[#082E63]/80 stroke-[2]" />
                 <span>Packaging for Australian brands</span>
               </div>
             </div>
