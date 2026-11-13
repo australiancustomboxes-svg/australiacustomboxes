@@ -216,8 +216,8 @@ export const ProductTypesSection: React.FC = () => {
               key={item.id}
               className="flex flex-col justify-between rounded-[16px] overflow-hidden bg-white border border-[#E5EBF5] shadow-[0_4px_18px_-4px_rgba(4,31,73,0.06)] hover:shadow-[0_14px_34px_-6px_rgba(4,31,73,0.13)] transition-all duration-300 group hover:-translate-y-1"
             >
-              {/* Card Image Area with Top-Left Highlight Badge */}
-              <div className="relative w-full h-[220px] sm:h-[240px] lg:h-[260px] bg-gradient-to-b from-[#F9F7F4] to-[#F3EFE9] flex items-center justify-center p-4 sm:p-5 overflow-hidden">
+              {/* Card Image Area with Top-Left Highlight Badge - Edge to Edge 100% Matching Image Size */}
+              <div className="relative w-full aspect-square overflow-hidden bg-[#F6F4F0]">
                 {/* Gold Highlight Badge */}
                 <div className="absolute top-3 left-3 sm:top-3.5 sm:left-3.5 z-10">
                   <span
@@ -231,11 +231,11 @@ export const ProductTypesSection: React.FC = () => {
                   </span>
                 </div>
 
-                {/* Packaging Box Image */}
+                {/* Packaging Box Image - Perfectly Fills Container Edge-to-Edge */}
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-contain transition-transform duration-500 transform group-hover:scale-105 pointer-events-none"
+                  className="w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-105 pointer-events-none"
                   loading="lazy"
                   decoding="async"
                 />
@@ -344,3 +344,4 @@ export const ProductTypesSection: React.FC = () => {
 };
 
 export default ProductTypesSection;
+
