@@ -1,4 +1,13 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Australian Custom Boxes (australiacustomboxes)
+
+Custom branded packaging manufacturer for Australian businesses — Mailer boxes, shipping cartons, folding cartons, and rigid gift boxes.
+
+## Tech Stack
+- Next.js 16.4.5 (App Router, Turbopack, static export)
+- React 19
+- TypeScript 5
+- Tailwind CSS v4
+- Vitest
 
 ## Getting Started
 
