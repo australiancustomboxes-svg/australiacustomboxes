@@ -7,3 +7,4 @@ export * from "./HeroNoMinimumBadge";
 export * from "./BenefitsSection";
 export * from "./HeroMobileSlider";
 export * from "./HeroMobileView";
+export * from "./ProductTypesSection";
