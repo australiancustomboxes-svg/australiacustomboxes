@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import {
+  Upload,
   UploadCloud,
   ArrowUpRight,
   Phone,
@@ -16,6 +17,7 @@ type DimensionUnit = "in" | "cm" | "mm";
 type PrintedSides = "Outside" | "Inside" | "Inside & Outside" | "No Print";
 
 const boxStyles = [
+  "Select a style",
   "Custom Mailer Boxes",
   "Heavy Duty Corrugated Mailer",
   "Custom Boutique Mailer Carton",
@@ -99,7 +101,7 @@ export const QuoteFormSection: React.FC = () => {
     <section
       id="get-a-quote"
       aria-labelledby="quote-heading"
-      className="w-full bg-[#F8FAFD] py-14 sm:py-20 lg:py-24 border-t border-b border-[#E2E8F0] shadow-[0_8px_30px_-6px_rgba(4,31,73,0.06)] relative z-10"
+      className="w-full bg-white py-14 sm:py-20 lg:py-24 border-t border-b border-[#E5EBF5] shadow-[0_8px_30px_-6px_rgba(4,31,73,0.06)] relative z-10"
     >
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14 items-start">
@@ -244,41 +246,40 @@ export const QuoteFormSection: React.FC = () => {
 
           {/* =========================================================
               RIGHT COLUMN: 3-Step Interactive Quote Request Form
-              Elevated White Card with Proper Layered Shadow
+              100% Faithful to Figma Screenshot
              ========================================================= */}
           <div className="lg:col-span-7 w-full">
-            <div className="w-full bg-white rounded-[22px] p-6 sm:p-8 lg:p-10 border border-[#DCE4EF] shadow-[0_20px_50px_-10px_rgba(4,31,73,0.16),0_6px_20px_-4px_rgba(4,31,73,0.08)] relative overflow-hidden">
-              {/* Top Gold Accent Bar inside Form Card */}
-              <div className="absolute top-0 left-0 right-0 h-[4px] bg-[#F2B329]" />
+            {/* Top Gold Accent Bar */}
+            <div className="w-full h-[3px] bg-[#F2B329] rounded-full mb-8 lg:mb-9" />
 
-              {isSubmitted ? (
-                <div className="p-8 sm:p-10 rounded-[18px] bg-[#F8FAFD] border border-[#DCE4EF] text-center flex flex-col items-center justify-center animate-fadeIn">
-                  <div className="w-14 h-14 rounded-full bg-[#34A853]/15 text-[#34A853] flex items-center justify-center mb-4">
-                    <CheckCircle2 className="w-8 h-8 stroke-[2.4]" />
-                  </div>
-                  <h3
-                    className="text-2xl font-bold text-[#082E63] mb-2"
-                    style={{
-                      fontFamily: "var(--font-archivo), 'Archivo', sans-serif",
-                    }}
-                  >
-                    Quote Request Received!
-                  </h3>
-                  <p className="text-[14.5px] text-[#082E63]/75 max-w-[420px] mb-6 leading-relaxed">
-                    Thank you, <strong>{name || "Valued Customer"}</strong>. Our
-                    Australian packaging engineering team will review your specs
-                    and send you pricing with a free 3D digital mockup within 1
-                    business day.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => setIsSubmitted(false)}
-                    className="h-[42px] px-6 rounded-full bg-[#041F49] text-white text-[13px] font-bold hover:bg-[#F2B329] hover:text-[#041F49] transition-all"
-                  >
-                    Submit Another Quote
-                  </button>
+            {isSubmitted ? (
+              <div className="p-8 sm:p-10 rounded-[18px] bg-[#F8FAFD] border border-[#DCE4EF] text-center flex flex-col items-center justify-center animate-fadeIn">
+                <div className="w-14 h-14 rounded-full bg-[#34A853]/15 text-[#34A853] flex items-center justify-center mb-4">
+                  <CheckCircle2 className="w-8 h-8 stroke-[2.4]" />
                 </div>
-              ) : (
+                <h3
+                  className="text-2xl font-bold text-[#082E63] mb-2"
+                  style={{
+                    fontFamily: "var(--font-archivo), 'Archivo', sans-serif",
+                  }}
+                >
+                  Quote Request Received!
+                </h3>
+                <p className="text-[14.5px] text-[#082E63]/75 max-w-[420px] mb-6 leading-relaxed">
+                  Thank you, <strong>{name || "Valued Customer"}</strong>. Our
+                  Australian packaging engineering team will review your specs
+                  and send you pricing with a free 3D digital mockup within 1
+                  business day.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setIsSubmitted(false)}
+                  className="h-[42px] px-6 rounded-full bg-[#041F49] text-white text-[13px] font-bold hover:bg-[#F2B329] hover:text-[#041F49] transition-all"
+                >
+                  Submit Another Quote
+                </button>
+              </div>
+            ) : (
               <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Anti-Bot Honeypot Security Field */}
                 <HoneypotField />
@@ -287,7 +288,7 @@ export const QuoteFormSection: React.FC = () => {
                     STEP 1: Your details
                    ---------------------------------------------------- */}
                 <fieldset className="space-y-4">
-                  <div className="flex items-center gap-2 mb-3">
+                  <div className="flex items-center gap-2.5 mb-3.5">
                     <span className="w-5 h-5 rounded-full bg-[#041F49] text-white text-[11px] font-bold flex items-center justify-center shrink-0">
                       1
                     </span>
@@ -311,8 +312,7 @@ export const QuoteFormSection: React.FC = () => {
                         required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="John Smith"
-                        className="w-full h-[42px] px-3.5 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13.5px] focus:outline-none focus:ring-2 focus:ring-[#F2B329] focus:border-[#F2B329] transition-all placeholder:text-gray-400"
+                        className="w-full h-[42px] px-3.5 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13.5px] focus:outline-none focus:ring-1 focus:ring-[#082E63] focus:border-[#082E63] transition-all"
                       />
                     </div>
 
@@ -329,8 +329,7 @@ export const QuoteFormSection: React.FC = () => {
                         type="text"
                         value={company}
                         onChange={(e) => setCompany(e.target.value)}
-                        placeholder="Brand or Studio Pty Ltd"
-                        className="w-full h-[42px] px-3.5 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13.5px] focus:outline-none focus:ring-2 focus:ring-[#F2B329] focus:border-[#F2B329] transition-all placeholder:text-gray-400"
+                        className="w-full h-[42px] px-3.5 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13.5px] focus:outline-none focus:ring-1 focus:ring-[#082E63] focus:border-[#082E63] transition-all"
                       />
                     </div>
 
@@ -348,8 +347,7 @@ export const QuoteFormSection: React.FC = () => {
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="john@company.com.au"
-                        className="w-full h-[42px] px-3.5 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13.5px] focus:outline-none focus:ring-2 focus:ring-[#F2B329] focus:border-[#F2B329] transition-all placeholder:text-gray-400"
+                        className="w-full h-[42px] px-3.5 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13.5px] focus:outline-none focus:ring-1 focus:ring-[#082E63] focus:border-[#082E63] transition-all"
                       />
                     </div>
 
@@ -367,8 +365,7 @@ export const QuoteFormSection: React.FC = () => {
                         required
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        placeholder="+61 400 000 000"
-                        className="w-full h-[42px] px-3.5 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13.5px] focus:outline-none focus:ring-2 focus:ring-[#F2B329] focus:border-[#F2B329] transition-all placeholder:text-gray-400"
+                        className="w-full h-[42px] px-3.5 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13.5px] focus:outline-none focus:ring-1 focus:ring-[#082E63] focus:border-[#082E63] transition-all"
                       />
                     </div>
                   </div>
@@ -400,7 +397,7 @@ export const QuoteFormSection: React.FC = () => {
                         id="quote-boxtype"
                         value={boxType}
                         onChange={(e) => setBoxType(e.target.value)}
-                        className="w-full h-[42px] px-3 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13.5px] focus:outline-none focus:ring-2 focus:ring-[#F2B329] focus:border-[#F2B329] transition-all"
+                        className="w-full h-[42px] px-3 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13.5px] focus:outline-none focus:ring-1 focus:ring-[#082E63] focus:border-[#082E63] transition-all"
                       >
                         {boxStyles.map((style) => (
                           <option key={style} value={style}>
@@ -423,7 +420,7 @@ export const QuoteFormSection: React.FC = () => {
                         value={quantity}
                         onChange={(e) => setQuantity(e.target.value)}
                         placeholder="e.g. 1, 250 or 5,000"
-                        className="w-full h-[42px] px-3.5 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13.5px] focus:outline-none focus:ring-2 focus:ring-[#F2B329] focus:border-[#F2B329] transition-all placeholder:text-gray-400"
+                        className="w-full h-[42px] px-3.5 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13.5px] focus:outline-none focus:ring-1 focus:ring-[#082E63] focus:border-[#082E63] transition-all placeholder:text-gray-400"
                       />
                     </div>
                   </div>
@@ -444,7 +441,7 @@ export const QuoteFormSection: React.FC = () => {
                         value={length}
                         onChange={(e) => setLength(e.target.value)}
                         placeholder="L"
-                        className="w-full h-[40px] px-3 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13px] text-center focus:outline-none focus:ring-2 focus:ring-[#F2B329] focus:border-[#F2B329] transition-all"
+                        className="w-full h-[40px] px-3 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13px] text-center focus:outline-none focus:ring-1 focus:ring-[#082E63] focus:border-[#082E63] transition-all"
                       />
                     </div>
 
@@ -462,7 +459,7 @@ export const QuoteFormSection: React.FC = () => {
                         value={width}
                         onChange={(e) => setWidth(e.target.value)}
                         placeholder="W"
-                        className="w-full h-[40px] px-3 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13px] text-center focus:outline-none focus:ring-2 focus:ring-[#F2B329] focus:border-[#F2B329] transition-all"
+                        className="w-full h-[40px] px-3 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13px] text-center focus:outline-none focus:ring-1 focus:ring-[#082E63] focus:border-[#082E63] transition-all"
                       />
                     </div>
 
@@ -480,7 +477,7 @@ export const QuoteFormSection: React.FC = () => {
                         value={height}
                         onChange={(e) => setHeight(e.target.value)}
                         placeholder="H"
-                        className="w-full h-[40px] px-3 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13px] text-center focus:outline-none focus:ring-2 focus:ring-[#F2B329] focus:border-[#F2B329] transition-all"
+                        className="w-full h-[40px] px-3 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13px] text-center focus:outline-none focus:ring-1 focus:ring-[#082E63] focus:border-[#082E63] transition-all"
                       />
                     </div>
 
@@ -595,7 +592,7 @@ export const QuoteFormSection: React.FC = () => {
                   </div>
 
                   {/* File Upload Box */}
-                  <div className="relative border border-dashed border-[#94A3B8] rounded-[10px] p-5 sm:p-6 bg-[#FAFCFF] hover:border-[#F2B329] transition-all text-center">
+                  <div className="relative border border-dashed border-[#CBD5E1] rounded-[8px] p-5 sm:p-6 bg-white hover:border-[#082E63] transition-all">
                     <input
                       id="artwork-upload"
                       type="file"
@@ -603,21 +600,21 @@ export const QuoteFormSection: React.FC = () => {
                       onChange={handleFileUpload}
                       className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                     />
-                    <div className="flex items-center justify-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-[#F2B329]/15 text-[#B5882D] flex items-center justify-center shrink-0">
+                    <div className="flex items-center gap-3.5">
+                      <div className="text-[#F2B329] flex items-center justify-center shrink-0">
                         {artworkFile ? (
                           <FileCheck className="w-5 h-5 text-[#34A853]" />
                         ) : (
-                          <UploadCloud className="w-5 h-5" />
+                          <Upload className="w-5 h-5 stroke-[2.2]" />
                         )}
                       </div>
                       <div className="text-left">
-                        <p className="text-[13px] font-bold text-[#082E63]">
+                        <p className="text-[13.5px] font-bold text-[#082E63] leading-snug">
                           {artworkFile
                             ? artworkFile.name
                             : "Upload artwork"}
                         </p>
-                        <p className="text-[11.5px] text-[#082E63]/60 font-normal">
+                        <p className="text-[12px] text-[#082E63]/70 font-normal mt-0.5">
                           PDF, AI, EPS, PSD, PNG or JPG. No artwork yet? Our
                           designers will help for free.
                         </p>
@@ -639,7 +636,7 @@ export const QuoteFormSection: React.FC = () => {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Tell us what you're packing, your deadline and any special requirements."
-                      className="w-full p-3 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13px] focus:outline-none focus:ring-2 focus:ring-[#F2B329] focus:border-[#F2B329] transition-all placeholder:text-gray-400"
+                      className="w-full p-3 rounded-[6px] border border-[#CBD5E1] bg-white text-[#082E63] text-[13px] focus:outline-none focus:ring-1 focus:ring-[#082E63] focus:border-[#082E63] transition-all placeholder:text-gray-400"
                     />
                   </div>
                 </fieldset>
@@ -658,7 +655,7 @@ export const QuoteFormSection: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full sm:w-auto h-[46px] pl-6 pr-2 rounded-full flex items-center justify-between sm:justify-center gap-3 transition-all duration-200 active:scale-95 shadow-[0_10px_25px_-5px_rgba(242,179,41,0.5)] cursor-pointer disabled:opacity-70"
+                    className="w-full sm:w-auto h-[46px] pl-6 pr-2 rounded-full flex items-center justify-between sm:justify-center gap-3 transition-all duration-200 active:scale-95 shadow-[0_12px_28px_rgba(242,179,41,0.5)] cursor-pointer disabled:opacity-70 hover:bg-[#e2a420]"
                     style={{
                       backgroundColor: "#F2B329",
                     }}
@@ -679,7 +676,6 @@ export const QuoteFormSection: React.FC = () => {
                 </div>
               </form>
             )}
-            </div>
           </div>
         </div>
       </div>
