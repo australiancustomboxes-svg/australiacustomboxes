@@ -2,6 +2,7 @@ import {
   HeroSection,
   BenefitsSection,
   ProductTypesSection,
+  QuoteFormSection,
 } from "@/components/home";
 
 export default function Home() {
@@ -15,6 +16,9 @@ export default function Home() {
 
       {/* 3. Product Types Section: "Custom box types for every product" */}
       <ProductTypesSection />
+
+      {/* 4. Free Quote Request Form Section: "Get your custom packaging quote." */}
+      <QuoteFormSection />
     </>
   );
 }

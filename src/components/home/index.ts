@@ -8,3 +8,4 @@ export * from "./BenefitsSection";
 export * from "./HeroMobileSlider";
 export * from "./HeroMobileView";
 export * from "./ProductTypesSection";
+export * from "./QuoteFormSection";
