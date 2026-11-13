@@ -109,117 +109,115 @@ export const QuoteFormSection: React.FC = () => {
               LEFT COLUMN: Brand Value Proposition, Steps & Contacts
               100% Faithful to Figma Screenshot
              ========================================================= */}
-          <div className="lg:col-span-5 flex flex-col justify-between h-full pt-1">
-            <div>
-              {/* Eyebrow */}
-              <div className="flex items-center gap-2 mb-3.5 select-none">
-                <div
-                  className="w-[6px] h-[6px] bg-[#F2B329] rotate-45 shrink-0"
-                  aria-hidden="true"
-                />
+          <div className="lg:col-span-5 flex flex-col pt-1">
+            {/* Eyebrow */}
+            <div className="flex items-center gap-2 mb-3.5 select-none">
+              <div
+                className="w-[6px] h-[6px] bg-[#F2B329] rotate-45 shrink-0"
+                aria-hidden="true"
+              />
+              <span
+                className="text-[11px] font-bold uppercase tracking-[2.6px] text-[#082E63]/75"
+                style={{
+                  fontFamily:
+                    "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                }}
+              >
+                FREE QUOTE
+              </span>
+            </div>
+
+            {/* Headline: 3-line Figtree typographic lockup matching Figma */}
+            <h2
+              id="quote-heading"
+              className="text-[36px] sm:text-[44px] lg:text-[48px] xl:text-[52px] font-normal text-[#082E63] tracking-[-0.02em] leading-[1.08] mb-6"
+              style={{
+                fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
+              }}
+            >
+              Get your custom
+              <br />
+              <span
+                className="italic text-[#F2B329]"
+                style={{
+                  fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
+                }}
+              >
+                packaging
+              </span>
+              <br />
+              <span
+                className="italic text-[#F2B329]"
+                style={{
+                  fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
+                }}
+              >
+                quote.
+              </span>
+            </h2>
+
+            {/* Subtitle */}
+            <p
+              className="text-[14px] sm:text-[15px] lg:text-[15.5px] text-[#082E63]/75 leading-[1.62] font-normal mb-8 sm:mb-9 max-w-[430px]"
+              style={{
+                fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
+              }}
+            >
+              Share a few details. Rough numbers are fine. We&apos;ll come back
+              with pricing, a material recommendation and your free 3D mockup.
+            </p>
+
+            {/* Numbered Steps: 01, 02, 03 (Stacked vertically as in Figma) */}
+            <div className="space-y-6 sm:space-y-7 mb-8 sm:mb-9 select-none max-w-[420px]">
+              {/* Step 01 */}
+              <div>
                 <span
-                  className="text-[11px] font-bold uppercase tracking-[2.6px] text-[#082E63]/75"
+                  className="block text-[#F2B329] text-[13px] sm:text-[14px] font-bold tracking-wide mb-1"
                   style={{
-                    fontFamily:
-                      "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                    fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
                   }}
                 >
-                  FREE QUOTE
+                  01
                 </span>
+                <p className="text-[13.5px] sm:text-[14px] text-[#082E63]/85 leading-[1.5] font-normal">
+                  We review your specs and suggest the best board, style and
+                  print.
+                </p>
               </div>
 
-              {/* Headline: 3-line Figtree typographic lockup matching Figma */}
-              <h2
-                id="quote-heading"
-                className="text-[36px] sm:text-[44px] lg:text-[48px] xl:text-[52px] font-normal text-[#082E63] tracking-[-0.02em] leading-[1.08] mb-6"
-                style={{
-                  fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
-                }}
-              >
-                Get your custom
-                <br />
+              {/* Step 02 */}
+              <div>
                 <span
-                  className="italic text-[#F2B329]"
+                  className="block text-[#F2B329] text-[13px] sm:text-[14px] font-bold tracking-wide mb-1"
                   style={{
                     fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
                   }}
                 >
-                  packaging
+                  02
                 </span>
-                <br />
+                <p className="text-[13.5px] sm:text-[14px] text-[#082E63]/85 leading-[1.5] font-normal">
+                  You get a clear quote, with bulk pricing tiers if you need
+                  them.
+                </p>
+              </div>
+
+              {/* Step 03 */}
+              <div>
                 <span
-                  className="italic text-[#F2B329]"
+                  className="block text-[#F2B329] text-[13px] sm:text-[14px] font-bold tracking-wide mb-1"
                   style={{
                     fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
                   }}
                 >
-                  quote.
+                  03
                 </span>
-              </h2>
-
-              {/* Subtitle */}
-              <p
-                className="text-[14px] sm:text-[15px] lg:text-[15.5px] text-[#082E63]/75 leading-[1.62] font-normal mb-8 sm:mb-10 max-w-[430px]"
-                style={{
-                  fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
-                }}
-              >
-                Share a few details. Rough numbers are fine. We&apos;ll come back
-                with pricing, a material recommendation and your free 3D mockup.
-              </p>
-
-              {/* Numbered Steps: 01, 02, 03 (Stacked vertically as in Figma) */}
-              <div className="space-y-6 sm:space-y-7 mb-10 sm:mb-12 select-none max-w-[420px]">
-                {/* Step 01 */}
-                <div>
-                  <span
-                    className="block text-[#F2B329] text-[13px] sm:text-[14px] font-bold tracking-wide mb-1"
-                    style={{
-                      fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
-                    }}
-                  >
-                    01
-                  </span>
-                  <p className="text-[13.5px] sm:text-[14px] text-[#082E63]/85 leading-[1.5] font-normal">
-                    We review your specs and suggest the best board, style and
-                    print.
-                  </p>
-                </div>
-
-                {/* Step 02 */}
-                <div>
-                  <span
-                    className="block text-[#F2B329] text-[13px] sm:text-[14px] font-bold tracking-wide mb-1"
-                    style={{
-                      fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
-                    }}
-                  >
-                    02
-                  </span>
-                  <p className="text-[13.5px] sm:text-[14px] text-[#082E63]/85 leading-[1.5] font-normal">
-                    You get a clear quote, with bulk pricing tiers if you need
-                    them.
-                  </p>
-                </div>
-
-                {/* Step 03 */}
-                <div>
-                  <span
-                    className="block text-[#F2B329] text-[13px] sm:text-[14px] font-bold tracking-wide mb-1"
-                    style={{
-                      fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
-                    }}
-                  >
-                    03
-                  </span>
-                  <p className="text-[13.5px] sm:text-[14px] text-[#082E63]/85 leading-[1.5] font-normal">
-                    Approve your 3D mockup and proof, and production begins.
-                  </p>
-                </div>
+                <p className="text-[13.5px] sm:text-[14px] text-[#082E63]/85 leading-[1.5] font-normal">
+                  Approve your 3D mockup and proof, and production begins.
+                </p>
               </div>
             </div>
 
-            {/* Direct Contact Links (No dividing line, clean spacing as in Figma) */}
+            {/* Direct Contact Links (Sitting directly below Step 03 with exact Figma spacing) */}
             <div className="space-y-3.5 text-[#082E63] text-[13.5px] font-medium">
               <a
                 href="tel:0280000000"
