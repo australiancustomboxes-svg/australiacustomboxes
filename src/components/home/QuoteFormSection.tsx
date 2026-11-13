@@ -99,17 +99,9 @@ export const QuoteFormSection: React.FC = () => {
     <section
       id="get-a-quote"
       aria-labelledby="quote-heading"
-      className="w-full bg-white py-14 sm:py-20 lg:py-24 border-b border-[#E5EBF5]"
+      className="w-full bg-[#F8FAFD] py-14 sm:py-20 lg:py-24 border-t border-b border-[#E2E8F0] shadow-[0_8px_30px_-6px_rgba(4,31,73,0.06)] relative z-10"
     >
       <div className="site-container">
-        {/* Top Gold Accent Bar on Right Form Column (Parity with design) */}
-        <div className="hidden lg:grid grid-cols-12 gap-10 xl:gap-14 mb-2">
-          <div className="col-span-5" />
-          <div className="col-span-7">
-            <div className="w-full h-[3px] bg-[#F2B329] rounded-full mb-8" />
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14 items-start">
           {/* =========================================================
               LEFT COLUMN: Brand Value Proposition, Steps & Contacts
@@ -243,39 +235,41 @@ export const QuoteFormSection: React.FC = () => {
 
           {/* =========================================================
               RIGHT COLUMN: 3-Step Interactive Quote Request Form
+              Elevated White Card with Proper Layered Shadow
              ========================================================= */}
-          <div className="lg:col-span-7 bg-white">
-            {/* Mobile Top Accent */}
-            <div className="block lg:hidden w-full h-[3px] bg-[#F2B329] rounded-full mb-6" />
+          <div className="lg:col-span-7 w-full">
+            <div className="w-full bg-white rounded-[22px] p-6 sm:p-8 lg:p-10 border border-[#DCE4EF] shadow-[0_20px_50px_-10px_rgba(4,31,73,0.16),0_6px_20px_-4px_rgba(4,31,73,0.08)] relative overflow-hidden">
+              {/* Top Gold Accent Bar inside Form Card */}
+              <div className="absolute top-0 left-0 right-0 h-[4px] bg-[#F2B329]" />
 
-            {isSubmitted ? (
-              <div className="p-8 sm:p-10 rounded-[18px] bg-[#F8FAFD] border border-[#DCE4EF] text-center flex flex-col items-center justify-center animate-fadeIn">
-                <div className="w-14 h-14 rounded-full bg-[#34A853]/15 text-[#34A853] flex items-center justify-center mb-4">
-                  <CheckCircle2 className="w-8 h-8 stroke-[2.4]" />
+              {isSubmitted ? (
+                <div className="p-8 sm:p-10 rounded-[18px] bg-[#F8FAFD] border border-[#DCE4EF] text-center flex flex-col items-center justify-center animate-fadeIn">
+                  <div className="w-14 h-14 rounded-full bg-[#34A853]/15 text-[#34A853] flex items-center justify-center mb-4">
+                    <CheckCircle2 className="w-8 h-8 stroke-[2.4]" />
+                  </div>
+                  <h3
+                    className="text-2xl font-bold text-[#082E63] mb-2"
+                    style={{
+                      fontFamily: "var(--font-archivo), 'Archivo', sans-serif",
+                    }}
+                  >
+                    Quote Request Received!
+                  </h3>
+                  <p className="text-[14.5px] text-[#082E63]/75 max-w-[420px] mb-6 leading-relaxed">
+                    Thank you, <strong>{name || "Valued Customer"}</strong>. Our
+                    Australian packaging engineering team will review your specs
+                    and send you pricing with a free 3D digital mockup within 1
+                    business day.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setIsSubmitted(false)}
+                    className="h-[42px] px-6 rounded-full bg-[#041F49] text-white text-[13px] font-bold hover:bg-[#F2B329] hover:text-[#041F49] transition-all"
+                  >
+                    Submit Another Quote
+                  </button>
                 </div>
-                <h3
-                  className="text-2xl font-bold text-[#082E63] mb-2"
-                  style={{
-                    fontFamily: "var(--font-archivo), 'Archivo', sans-serif",
-                  }}
-                >
-                  Quote Request Received!
-                </h3>
-                <p className="text-[14.5px] text-[#082E63]/75 max-w-[420px] mb-6 leading-relaxed">
-                  Thank you, <strong>{name || "Valued Customer"}</strong>. Our
-                  Australian packaging engineering team will review your specs
-                  and send you pricing with a free 3D digital mockup within 1
-                  business day.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setIsSubmitted(false)}
-                  className="h-[42px] px-6 rounded-full bg-[#041F49] text-white text-[13px] font-bold hover:bg-[#F2B329] hover:text-[#041F49] transition-all"
-                >
-                  Submit Another Quote
-                </button>
-              </div>
-            ) : (
+              ) : (
               <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Anti-Bot Honeypot Security Field */}
                 <HoneypotField />
@@ -676,6 +670,7 @@ export const QuoteFormSection: React.FC = () => {
                 </div>
               </form>
             )}
+            </div>
           </div>
         </div>
       </div>
@@ -684,3 +679,4 @@ export const QuoteFormSection: React.FC = () => {
 };
 
 export default QuoteFormSection;
+

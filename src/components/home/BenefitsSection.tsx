@@ -160,27 +160,29 @@ export const BenefitsSection: React.FC = () => {
   return (
     <section
       aria-label="Australian Custom Boxes Benefits"
-      className="w-full bg-white border-t border-b border-[#E5EBF5] relative z-10"
+      className="w-full bg-white border-t border-b border-[#E5EBF5] shadow-[0_8px_28px_-6px_rgba(4,31,73,0.08)] relative z-20"
     >
       <div className="site-container">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 min-h-[187.64px]">
+        {/* 
+          1. Desktop Layout (xl: >= 1280px):
+          Exact Figma 5-column row with vertical dividers and 187.64px height
+        */}
+        <div className="hidden xl:grid grid-cols-5 min-h-[187.64px]">
           {benefitsData.map((item, index) => {
             const isLast = index === benefitsData.length - 1;
             return (
               <div
                 key={item.id}
                 className={`flex flex-col justify-start pt-[34px] pb-[32px] px-6 lg:px-7 transition-colors duration-200 hover:bg-slate-50/60 group ${
-                  !isLast
-                    ? "xl:border-r xl:border-[#E5EBF5] border-b sm:border-b-0 border-[#E5EBF5]"
-                    : ""
+                  !isLast ? "border-r border-[#E5EBF5]" : ""
                 }`}
               >
-                {/* 1. 30px x 30px Gold Icon */}
+                {/* 30px x 30px Gold Icon */}
                 <div className="w-[30px] h-[30px] flex items-center justify-start transition-transform duration-200 group-hover:scale-105">
                   {item.icon}
                 </div>
 
-                {/* 2. Strong Title (Libre Franklin 600, 16.3px, #082E63) */}
+                {/* Title */}
                 <h3
                   className="text-[#082E63] text-[16.3px] font-semibold leading-[26px] tracking-[-0.163px] mt-[13px]"
                   style={{
@@ -192,7 +194,7 @@ export const BenefitsSection: React.FC = () => {
                   {item.title}
                 </h3>
 
-                {/* 3. Description (Libre Franklin 400, 14.1px, rgba(8, 46, 99, 0.66)) */}
+                {/* Description */}
                 <p
                   className="text-[14.1px] font-normal leading-[21px] mt-[6px]"
                   style={{
@@ -204,6 +206,50 @@ export const BenefitsSection: React.FC = () => {
                 >
                   {item.description}
                 </p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* 
+          2. Mobile & Tablet Layout (< xl: < 1280px):
+          Fully mobile-responsive grid with compact cards and soft shadows
+        */}
+        <div className="grid xl:hidden grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-4 py-5 sm:py-8">
+          {benefitsData.map((item, index) => {
+            const isFifth = index === 4;
+            return (
+              <div
+                key={item.id}
+                className={`flex flex-col justify-between p-3.5 sm:p-4 rounded-[12px] bg-[#F8FAFD] border border-[#E5EBF5] shadow-xs transition-all duration-200 hover:border-[#F2B329]/50 ${
+                  isFifth ? "col-span-2 sm:col-span-1" : ""
+                }`}
+              >
+                <div>
+                  <div className="w-[26px] h-[26px] flex items-center justify-start">
+                    {item.icon}
+                  </div>
+
+                  <h3
+                    className="text-[#082E63] text-[13.5px] sm:text-[14.5px] font-semibold leading-tight mt-2.5 tracking-tight"
+                    style={{
+                      fontFamily:
+                        "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                    }}
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p
+                    className="text-[11.5px] sm:text-[12.5px] font-normal leading-[1.4] mt-1 text-[#082E63]/70"
+                    style={{
+                      fontFamily:
+                        "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                    }}
+                  >
+                    {item.description}
+                  </p>
+                </div>
               </div>
             );
           })}

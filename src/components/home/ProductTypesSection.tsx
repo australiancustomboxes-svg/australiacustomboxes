@@ -178,7 +178,7 @@ export const ProductTypesSection: React.FC = () => {
     <section
       id="product-types"
       aria-labelledby="product-types-heading"
-      className="w-full bg-[#F8FAFD] py-14 sm:py-18 lg:py-24 border-b border-[#E2E8F0]"
+      className="w-full bg-[#F8FAFD] py-14 sm:py-18 lg:py-24 border-b border-[#E2E8F0] shadow-[0_6px_24px_-6px_rgba(4,31,73,0.05)] relative z-10"
     >
       <div className="site-container">
         {/* 
