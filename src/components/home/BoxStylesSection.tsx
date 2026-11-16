@@ -20,22 +20,19 @@ export const boxStylesList: BoxStyleTab[] = [
 ];
 
 /**
- * BoxStylesSection — Figma Group 443 (1640px × 1158px · canvas 1920w light)
+ * BoxStylesSection — Figma Group 443
+ * Canvas: # 1920w light (1920px)
+ * Section: width=1640px, left=0px, height=1158px
  *
- * Desktop layout (≥1024px):
- *  ┌────────────────────────────────┬──────────────────────────────────┐
- *  │  NAVY (#041F49) full-bleed     │  Photo card (portrait 775×969)   │
- *  │  left edge → 56.8% width       │  border-radius: 30px             │
- *  │  border-radius: 0 270px 0 0    │                                  │
- *  │  Content starts at 280px left  │                                  │
- *  │  ◆ BOX STYLES eyebrow          │                                  │
- *  │  Heading (64px Libre 300)      │                                  │
- *  │  Description (19.5px 350)      │                                  │
- *  │  7 × Tab rows (72px each)      ├────────────────┬─────────────────┤
- *  │                                │ Spec desc left │ BOARD / ADD     │
- *  └────────────────────────────────┴────────────────┴─────────────────┘
- *
- * Photo card is PORTRAIT — height ≈ 1.25 × width (Figma: 775 × 969 px).
+ * Exact Figma proportions (all mapped to exact percentages of 1920px viewport):
+ *  • Navy col (Group 431):    0 → 48.49vw (931px)   border-radius: 0 270px 0 0
+ *  • Text content (Group 430): 14.51vw (278.55px), width 25.54vw (490.34px)
+ *  • Gap text-to-photo:        5.00vw (96.0px)
+ *  • Photo card (Group 432):   45.05vw (864.89px), width 40.37vw (775.11px)
+ *    -> Photo overlaps navy by exactly 3.44vw (66.11px: 931px - 864.89px)
+ *  • Photo right edge:         85.42vw (1640.0px)
+ *  • Right white margin:       14.58vw (280.0px outside section)
+ *  • Specs description:        starts at 981px (51.09vw) -> in white area right of navy
  */
 export const BoxStylesSection: React.FC = () => {
   const [activeTabId, setActiveTabId] = useState<string>("01");
@@ -44,109 +41,128 @@ export const BoxStylesSection: React.FC = () => {
     <section
       id="box-styles"
       aria-labelledby="box-styles-heading"
-      /* White background; overflow-hidden to clip the left bleed pseudo-element */
       className="w-full bg-white overflow-hidden border-b border-[#E5EBF5]"
     >
-      {/*
-        Outer wrapper — full viewport width, centered content up to 1920px.
-        On desktop we use a 12-col grid. The left col has a navy bleed that
-        extends all the way to the screen's left edge.
-      */}
-      <div className="max-w-[1920px] mx-auto">
-        {/* ── MOBILE: stacked card ─────────────────────────────────────── */}
-        <div className="lg:hidden px-4 sm:px-6 py-10 sm:py-14">
-          {/* Mobile Navy card */}
-          <div className="bg-[#041F49] rounded-2xl rounded-tr-[100px] sm:rounded-tr-[140px] p-6 sm:p-8 text-white mb-6 sm:mb-8">
-            <Eyebrow />
-            <Heading />
-            <Description />
-            <TabList activeTabId={activeTabId} setActiveTabId={setActiveTabId} />
-          </div>
-          {/* Mobile photo + specs */}
-          <PhotoCard />
-          <SpecsArea />
+      {/* ════════════════════════════════════════════════════════════════
+          MOBILE / TABLET (<lg) — Stacked card layout
+         ════════════════════════════════════════════════════════════════ */}
+      <div className="lg:hidden px-5 sm:px-8 py-10 sm:py-14">
+        {/* Navy card */}
+        <div className="bg-[#041F49] rounded-2xl rounded-tr-[100px] sm:rounded-tr-[140px] p-6 sm:p-9 text-white mb-6 sm:mb-8">
+          <EyebrowLabel />
+          <SectionHeading />
+          <BodyDescription />
+          <BoxStyleTabs activeTabId={activeTabId} setActiveTabId={setActiveTabId} />
         </div>
 
-        {/* ── DESKTOP: side-by-side ────────────────────────────────────── */}
-        <div className="hidden lg:grid lg:grid-cols-12 lg:items-start">
+        {/* Portrait photo card */}
+        <div
+          className="w-full overflow-hidden rounded-[22px] sm:rounded-[26px] bg-[#F2F0EB] relative shadow-[0_20px_60px_-10px_rgba(4,31,73,0.18)] mb-5 sm:mb-6"
+          style={{ aspectRatio: "775.11 / 860" }}
+        >
+          <Image
+            src="/images/box-styles/Two-Piece Box Style.webp"
+            alt="Custom Two-Piece Rigid Box Style with Gold Tray for Jewellery and Luxury Packaging"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+            priority
+          />
+        </div>
 
-          {/* ── LEFT COL (navy, 5/12 ≈ 490px text in 1640px canvas) ──── */}
-          {/*
-            The navy background must cover from x=0 (screen left edge) to
-            ~56.8% of the total section width, with 270px top-right radius.
-            We achieve this by giving the col "relative" and placing an
-            absolute navy layer that bleeds to the left via left:-100vw.
-            Content has padding-left that aligns with the site grid (~280px
-            on a 1920px viewport → xl:pl-[280px] approximated below).
-          */}
-          <div className="lg:col-span-5 relative self-stretch">
-            {/* Navy background bleed layer */}
-            <div
-              aria-hidden="true"
-              className="absolute inset-y-0 right-0 left-[-100vw] bg-[#041F49] rounded-tr-[180px] xl:rounded-tr-[240px] 2xl:rounded-tr-[270px] z-0"
-            />
-            {/* Content on top of navy */}
-            <div className="relative z-10 text-white
-              py-10 xl:py-14 2xl:py-20
-              pl-6 sm:pl-10 lg:pl-12 xl:pl-16 2xl:pl-[280px]
-              pr-4 lg:pr-6 xl:pr-8"
-            >
-              <Eyebrow />
-              <Heading />
-              <Description />
-              <TabList activeTabId={activeTabId} setActiveTabId={setActiveTabId} />
-            </div>
-          </div>
+        <SpecsBlock />
+      </div>
 
-          {/* ── RIGHT COL (photo + specs, 7/12) ──────────────────────── */}
-          {/*
-            Photo card: portrait aspect 775:969 (w:h ≈ 0.8:1).
-            Specs area below the card, in the white section background.
-            Right side has padding matching the left content margin (~280px).
-          */}
-          <div className="lg:col-span-7
-            py-10 xl:py-14 2xl:py-20
-            pr-6 sm:pr-10 lg:pr-8 xl:pr-12 2xl:pr-[280px]
-            pl-4 lg:pl-6 xl:pl-8
-            flex flex-col"
+      {/* ════════════════════════════════════════════════════════════════
+          DESKTOP (≥lg) — Exact Figma Group 443 Layout
+          • Navy background bleeds from screen left to 48.49vw (931px)
+          • Left text at 14.51vw (278.55px)
+          • Photo at 45.05vw (864.89px) overlapping navy curve by 66px
+          • Specs under photo with text at 981px
+         ════════════════════════════════════════════════════════════════ */}
+      <div
+        className="hidden lg:flex relative w-full overflow-hidden"
+        style={{
+          minHeight: "clamp(800px, 60.31vw, 1158px)",
+          paddingTop: "clamp(50px, 4.9vw, 94px)",
+          paddingBottom: "clamp(40px, 4.5vw, 86px)",
+        }}
+      >
+        {/* Navy bleed layer: screen-left to 48.49vw (931px at 1920px) */}
+        <div
+          aria-hidden="true"
+          className="absolute top-0 bottom-0 pointer-events-none bg-[#041F49]"
+          style={{
+            left: "-100vw",
+            width: "calc(100vw + 48.49vw)",
+            borderRadius: "0 clamp(160px, 14.06vw, 270px) 0 0",
+          }}
+        />
+
+        {/* Left Column: Group 430 (Text Content) */}
+        <div
+          className="relative z-10 text-white flex flex-col flex-shrink-0"
+          style={{
+            marginLeft: "14.51vw",
+            width: "25.54vw",
+          }}
+        >
+          <EyebrowLabel />
+          <SectionHeading />
+          <BodyDescription />
+          <BoxStyleTabs activeTabId={activeTabId} setActiveTabId={setActiveTabId} />
+        </div>
+
+        {/* Right Column: Group 432 (Photo Card + Specs) */}
+        <div
+          className="relative z-20 flex flex-col flex-shrink-0"
+          style={{
+            marginLeft: "5.0vw",
+            width: "40.37vw",
+            marginRight: "14.58vw",
+          }}
+        >
+          {/* Portrait photo card — Figma: 775.11px wide, border-radius 30px */}
+          <div
+            className="w-full overflow-hidden bg-[#F2F0EB] relative shadow-[0_20px_60px_-10px_rgba(4,31,73,0.18)]"
+            style={{
+              aspectRatio: "775.11 / 860",
+              borderRadius: "clamp(18px, 1.56vw, 30px)",
+            }}
           >
-            {/* Portrait photo card — Figma border-radius: 30px */}
-            <div
-              className="w-full overflow-hidden rounded-[22px] xl:rounded-[30px] bg-[#F2F0EB] relative shadow-[0_20px_60px_-10px_rgba(4,31,73,0.18)]"
-              style={{ aspectRatio: "775 / 969" }}
-            >
-              <Image
-                src="/images/box-styles/Two-Piece Box Style.webp"
-                alt="Custom Two-Piece Rigid Box Style with Gold Tray for Jewellery and Luxury Packaging"
-                fill
-                sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 55vw, (max-width: 1536px) 50vw, 775px"
-                className="object-cover object-center"
-                priority
-              />
-            </div>
-
-            {/* Specs below photo (white area) */}
-            <SpecsArea />
+            <Image
+              src="/images/box-styles/Two-Piece Box Style.webp"
+              alt="Custom Two-Piece Rigid Box Style with Gold Tray for Jewellery and Luxury Packaging"
+              fill
+              sizes="(max-width: 1280px) 42vw, (max-width: 1536px) 41vw, 775px"
+              className="object-cover object-center"
+              priority
+            />
           </div>
 
+          {/* Specs block below photo */}
+          <SpecsBlock />
         </div>
       </div>
     </section>
   );
 };
 
-/* ── Sub-components ─────────────────────────────────────────────────────── */
+/* ══ Reusable sub-components ══════════════════════════════════════════════ */
 
-function Eyebrow() {
+function EyebrowLabel() {
   return (
     <div className="flex items-center gap-2.5 mb-3 xl:mb-4 select-none">
       <div
-        className="w-[7px] h-[7px] bg-[#F2B329] rotate-45 shrink-0"
+        className="w-[7px] h-[7px] bg-[#F2B329] rotate-45 flex-shrink-0"
         aria-hidden="true"
       />
       <span
         className="text-[11px] xl:text-[11.5px] font-semibold uppercase tracking-[2.6px] xl:tracking-[2.765px] text-[rgba(245,248,255,0.66)]"
-        style={{ fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif", lineHeight: "19px" }}
+        style={{
+          fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+          lineHeight: "19px",
+        }}
       >
         BOX STYLES
       </span>
@@ -154,12 +170,18 @@ function Eyebrow() {
   );
 }
 
-function Heading() {
+function SectionHeading() {
   return (
     <h2
       id="box-styles-heading"
-      className="text-[32px] sm:text-[40px] lg:text-[42px] xl:text-[52px] 2xl:text-[62px] font-light text-white tracking-[-1.5px] xl:tracking-[-2.24px] leading-[1.06] xl:leading-[1.04] mb-4 xl:mb-5"
-      style={{ fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif", fontWeight: 300 }}
+      className="font-light text-white mb-4 xl:mb-5"
+      style={{
+        fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+        fontWeight: 300,
+        fontSize: "clamp(30px, 3.33vw, 64px)",
+        letterSpacing: "clamp(-1.2px, -0.117vw, -2.24px)",
+        lineHeight: "1.02",
+      }}
     >
       Packaging
       <br />
@@ -167,7 +189,10 @@ function Heading() {
       <br />
       <span
         className="italic text-[#F2B329]"
-        style={{ fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif", fontWeight: 300 }}
+        style={{
+          fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+          fontWeight: 300,
+        }}
       >
         your brand.
       </span>
@@ -175,11 +200,15 @@ function Heading() {
   );
 }
 
-function Description() {
+function BodyDescription() {
   return (
     <p
-      className="text-[13.5px] sm:text-[14.5px] xl:text-[17px] 2xl:text-[19px] font-[350] text-[rgba(245,248,255,0.66)] leading-[1.6] xl:leading-[29px] 2xl:leading-[31px] mb-6 xl:mb-8 max-w-[480px]"
-      style={{ fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif" }}
+      className="font-[350] text-[rgba(245,248,255,0.66)] leading-[1.6] mb-6 xl:mb-8"
+      style={{
+        fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+        fontSize: "clamp(13px, 1.015vw, 19.5px)",
+        maxWidth: "490px",
+      }}
     >
       From luxury rigid boxes to everyday shipping mailers, we build custom
       designed boxes that protect your product and make the first impression
@@ -189,7 +218,7 @@ function Description() {
   );
 }
 
-function TabList({
+function BoxStyleTabs({
   activeTabId,
   setActiveTabId,
 }: {
@@ -211,38 +240,63 @@ function TabList({
             role="tab"
             aria-selected={isActive}
             onClick={() => setActiveTabId(item.id)}
-            className={`w-full h-[50px] sm:h-[56px] xl:h-[64px] 2xl:h-[72px] border-b border-[rgba(245,248,255,0.14)] flex items-center justify-between text-left transition-colors duration-200 cursor-pointer group ${
+            className={`w-full border-b border-[rgba(245,248,255,0.14)] flex items-center justify-between text-left transition-colors duration-200 cursor-pointer group ${
               isActive ? "text-white" : "text-[rgba(245,248,255,0.66)] hover:text-white"
             }`}
+            style={{ height: "clamp(46px, 3.78vw, 72.7px)" }}
           >
             <div className="flex items-center min-w-0 pr-2">
               <span
-                className={`w-6 xl:w-8 text-[11.5px] xl:text-[12px] shrink-0 transition-colors ${
+                className={`flex-shrink-0 transition-colors ${
                   isActive ? "text-white" : "text-[rgba(245,248,255,0.66)] group-hover:text-white"
                 }`}
-                style={{ fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif", letterSpacing: "0.72px" }}
+                style={{
+                  fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                  fontSize: "12px",
+                  letterSpacing: "0.72px",
+                  width: "clamp(24px, 2vw, 32px)",
+                }}
               >
                 {item.num}
               </span>
               <span
-                className={`pl-4 xl:pl-7 text-[14.5px] sm:text-[16px] xl:text-[19px] 2xl:text-[20.8px] truncate transition-colors ${
+                className={`truncate transition-colors ${
                   isActive ? "text-white font-light" : "text-[rgba(245,248,255,0.66)] group-hover:text-white"
                 }`}
-                style={{ fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif", fontWeight: 300, letterSpacing: "-0.416px", lineHeight: "34px" }}
+                style={{
+                  fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                  fontWeight: 300,
+                  fontSize: "clamp(14px, 1.083vw, 20.8px)",
+                  letterSpacing: "-0.416px",
+                  lineHeight: "34px",
+                  paddingLeft: "clamp(12px, 1.5vw, 28px)",
+                }}
               >
                 {item.title}
               </span>
             </div>
-            {/* Gold arrow — visible only on active tab */}
+
+            {/* Gold arrow — only visible on active tab */}
             <svg
-              width="18" height="18" viewBox="0 0 18 18" fill="none"
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className={`shrink-0 transition-all duration-200 ${
-                isActive ? "opacity-100" : "opacity-0 -translate-x-2 group-hover:opacity-50 group-hover:translate-x-0"
+              className={`flex-shrink-0 transition-all duration-200 ${
+                isActive
+                  ? "opacity-100"
+                  : "opacity-0 -translate-x-2 group-hover:opacity-50 group-hover:translate-x-0"
               }`}
               aria-hidden="true"
             >
-              <path d="M3.5 9H14.5M14.5 9L9.5 4M14.5 9L9.5 14" stroke="#F2B329" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M3.5 9H14.5M14.5 9L9.5 4M14.5 9L9.5 14"
+                stroke="#F2B329"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
         );
@@ -251,53 +305,50 @@ function TabList({
   );
 }
 
-function PhotoCard() {
+function SpecsBlock() {
   return (
-    <div
-      className="w-full overflow-hidden rounded-[22px] sm:rounded-[26px] bg-[#F2F0EB] relative shadow-[0_20px_60px_-10px_rgba(4,31,73,0.18)] mb-5 sm:mb-6"
-      style={{ aspectRatio: "775 / 969" }}
-    >
-      <Image
-        src="/images/box-styles/Two-Piece Box Style.webp"
-        alt="Custom Two-Piece Rigid Box Style with Gold Tray for Jewellery and Luxury Packaging"
-        fill
-        sizes="100vw"
-        className="object-cover object-center"
-        priority
-      />
-    </div>
-  );
-}
-
-function SpecsArea() {
-  return (
-    <div className="mt-5 xl:mt-7 flex flex-col sm:flex-row items-start justify-between gap-5 sm:gap-6">
-      {/* Left: description */}
+    <div className="mt-5 lg:mt-6 xl:mt-7 flex flex-col sm:flex-row items-start justify-between gap-5 sm:gap-6">
+      {/* Left: description — pl-[15%] on lg ensures text starts at ~981px in white space */}
       <p
-        className="text-[13.5px] sm:text-[14.5px] xl:text-[15.7px] text-black font-normal leading-[23px] xl:leading-[25px] max-w-[300px] xl:max-w-[340px]"
-        style={{ fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif" }}
+        className="text-black font-normal lg:pl-[15%]"
+        style={{
+          fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+          fontSize: "clamp(13px, 0.818vw, 15.7px)",
+          lineHeight: "25px",
+          maxWidth: "400px",
+        }}
       >
         A separate lid and base in wrapped rigid board. The classic for
         jewellery, watches and gift sets.
       </p>
 
-      {/* Right: specs table */}
-      <div className="space-y-2 xl:space-y-3 shrink-0">
+      {/* Right: spec rows */}
+      <div className="flex-shrink-0 space-y-2 xl:space-y-2.5">
         {[
           { label: "BOARD", value: "Rigid greyboard, paper wrapped" },
           { label: "BEST FOR", value: "Jewellery, watches, gift sets" },
           { label: "ADD", value: "Foil, insert, ribbon" },
         ].map(({ label, value }) => (
-          <div key={label} className="flex items-baseline gap-3 sm:gap-4">
+          <div key={label} className="flex items-baseline gap-3 xl:gap-4">
             <span
-              className="w-[68px] xl:w-[76px] text-[9.5px] xl:text-[10.6px] font-semibold text-[#F2B329] uppercase shrink-0"
-              style={{ fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif", letterSpacing: "2.112px", lineHeight: "17px" }}
+              className="font-semibold text-[#F2B329] uppercase flex-shrink-0"
+              style={{
+                fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                fontSize: "10.6px",
+                letterSpacing: "2.112px",
+                lineHeight: "17px",
+                width: "68px",
+              }}
             >
               {label}
             </span>
             <span
-              className="text-[13px] xl:text-[14.1px] font-normal text-black leading-[22px] xl:leading-[23px]"
-              style={{ fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif" }}
+              className="text-black font-normal"
+              style={{
+                fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                fontSize: "clamp(12px, 0.734vw, 14.1px)",
+                lineHeight: "23px",
+              }}
             >
               {value}
             </span>
