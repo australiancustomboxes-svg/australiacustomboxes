@@ -19,8 +19,8 @@ export const industriesData: IndustryCardItem[] = [
     title: "Food & Beverage",
     description:
       "Food-safe custom product boxes that stay strong on the shelf and in the delivery bag.",
-    image: "/images/industries/ecopack-natural-gift-box-set.webp",
-    alt: "Custom Food and Beverage Product Packaging Boxes",
+    image: "/images/industries/card-ecopack.webp",
+    alt: "Custom EcoPack Natural Gift Box Set Packaging",
   },
   {
     id: "food-beverage-2",
@@ -28,8 +28,8 @@ export const industriesData: IndustryCardItem[] = [
     title: "Food & Beverage",
     description:
       "Food-safe custom product boxes that stay strong on the shelf and in the delivery bag.",
-    image: "/images/industries/ecowrap-sustainable-gift-box.webp",
-    alt: "Custom Macaron and Bakery Product Packaging Boxes",
+    image: "/images/industries/card-ecowrap.webp",
+    alt: "Custom EcoWrap Sustainable Gift Box Packaging",
   },
   {
     id: "food-beverage-3",
@@ -37,8 +37,8 @@ export const industriesData: IndustryCardItem[] = [
     title: "Food & Beverage",
     description:
       "Food-safe custom product boxes that stay strong on the shelf and in the delivery bag.",
-    image: "/images/industries/lumora-cedar-vanilla-candle-box.webp",
-    alt: "Custom Skincare and Luxury Candle Packaging Boxes",
+    image: "/images/industries/card-lumora.webp",
+    alt: "Custom Lumora Candle Box Packaging",
   },
   {
     id: "candles-fragrance",
@@ -273,9 +273,9 @@ function IndustryCard({ item }: { item: IndustryCardItem }) {
         className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
       />
 
-      {/* Deep Navy Gradient Overlay */}
+      {/* Deep Navy Gradient Overlay — starts below the product box */}
       <div
-        className="absolute inset-x-0 bottom-0 top-[35%] bg-gradient-to-t from-[#041F49] via-[#041F49]/95 via-45% to-transparent pointer-events-none"
+        className="absolute inset-x-0 bottom-0 top-[48%] bg-gradient-to-t from-[#041F49] from-45% via-[#041F49]/85 via-75% to-transparent pointer-events-none"
         aria-hidden="true"
       />
 
