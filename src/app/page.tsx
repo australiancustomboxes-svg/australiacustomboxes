@@ -5,6 +5,7 @@ import {
   QuoteFormSection,
   BoxStylesSection,
   IndustriesSection,
+  WhyACBSection,
 } from "@/components/home";
 
 export default function Home() {
@@ -27,6 +28,9 @@ export default function Home() {
 
       {/* 6. Industries Section: "Packaging for the way your industry sells." */}
       <IndustriesSection />
+
+      {/* 7. Why ACB Section: "We don't just make boxes. We make brands look better." */}
+      <WhyACBSection />
 
       {/* Spacing for bottom section drop shadow */}
       <div className="w-full h-14 bg-white" aria-hidden="true" />
