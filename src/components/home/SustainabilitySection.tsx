@@ -69,12 +69,12 @@ export const SustainabilitySection: React.FC = () => {
          ════════════════════════════════════════════════════════════════ */}
       <div className="lg:hidden px-4 sm:px-6 py-14 sm:py-18">
         {/* Arch Cards Row */}
-        <div className="grid grid-cols-3 gap-3 sm:gap-5 mb-10 max-w-lg mx-auto">
+        <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-10 max-w-lg mx-auto items-end">
           {materials.map((item) => (
             <div key={item.id} className="flex flex-col items-center">
               <div
                 className={`w-full overflow-hidden rounded-t-full bg-[#F4F7FB] relative shadow-md ${
-                  item.isTaller ? "aspect-[2/3.1]" : "aspect-[2/2.7]"
+                  item.isTaller ? "aspect-[7/9]" : "aspect-[1/1]"
                 }`}
               >
                 <Image
@@ -145,14 +145,20 @@ export const SustainabilitySection: React.FC = () => {
           className="relative z-20 flex items-end flex-shrink-0"
           style={{
             marginLeft: "clamp(40px, 6.3vw, 121px)",
-            gap: "clamp(16px, 1.6vw, 30px)",
+            gap: "clamp(12px, 0.833vw, 16px)",
           }}
         >
           {materials.map((item) => {
-            const cardHeight = item.isTaller
-              ? "clamp(300px, 18.75vw, 360px)"
-              : "clamp(250px, 15.88vw, 305px)";
-            const cardWidth = "clamp(200px, 14.0vw, 270px)";
+            let cardWidth = "clamp(220px, 15.73vw, 302px)";
+            let cardHeight = "clamp(230px, 15.88vw, 305px)";
+
+            if (item.id === "paperboard") {
+              cardWidth = "clamp(205px, 14.58vw, 280px)";
+              cardHeight = "clamp(270px, 18.75vw, 360px)";
+            } else if (item.id === "corrugated") {
+              cardWidth = "clamp(230px, 16.2vw, 311px)";
+              cardHeight = "clamp(230px, 15.88vw, 305px)";
+            }
 
             return (
               <div key={item.id} className="flex flex-col items-center">
@@ -169,7 +175,7 @@ export const SustainabilitySection: React.FC = () => {
                     src={item.image}
                     alt={item.alt}
                     fill
-                    sizes="(max-width: 1280px) 16vw, 270px"
+                    sizes="(max-width: 1280px) 20vw, 311px"
                     className="object-cover object-center"
                     priority
                   />
