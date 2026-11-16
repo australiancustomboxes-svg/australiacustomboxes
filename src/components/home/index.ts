@@ -10,3 +10,4 @@ export * from "./HeroMobileView";
 export * from "./ProductTypesSection";
 export * from "./QuoteFormSection";
 export * from "./BoxStylesSection";
+export * from "./IndustriesSection";

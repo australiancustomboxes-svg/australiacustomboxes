@@ -4,6 +4,7 @@ import {
   ProductTypesSection,
   QuoteFormSection,
   BoxStylesSection,
+  IndustriesSection,
 } from "@/components/home";
 
 export default function Home() {
@@ -23,6 +24,9 @@ export default function Home() {
 
       {/* 5. Box Styles Showcase: "Packaging designed around your brand." */}
       <BoxStylesSection />
+
+      {/* 6. Industries Section: "Packaging for the way your industry sells." */}
+      <IndustriesSection />
 
       {/* Spacing for bottom section drop shadow */}
       <div className="w-full h-14 bg-white" aria-hidden="true" />
