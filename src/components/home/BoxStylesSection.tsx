@@ -41,7 +41,7 @@ export const BoxStylesSection: React.FC = () => {
     <section
       id="box-styles"
       aria-labelledby="box-styles-heading"
-      className="w-full bg-white overflow-hidden border-b border-[#E5EBF5]"
+      className="w-full bg-white overflow-hidden"
     >
       {/* ════════════════════════════════════════════════════════════════
           MOBILE / TABLET (<lg) — Stacked card layout
