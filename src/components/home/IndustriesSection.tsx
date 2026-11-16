@@ -100,7 +100,7 @@ export const IndustriesSection: React.FC = () => {
     <section
       id="industries"
       aria-labelledby="industries-heading"
-      className="w-full bg-white py-16 sm:py-20 lg:py-24 border-b border-[#E5EBF5] relative z-10 overflow-hidden"
+      className="w-full bg-white py-16 sm:py-20 lg:py-24 relative z-10 overflow-hidden"
     >
       <div className="site-container">
         {/* ════════════════════════════════════════════════════════════════
