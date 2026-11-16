@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 
 export interface BoxStyleItem {
   id: string;
@@ -16,7 +15,7 @@ export interface BoxStyleItem {
   add: string;
 }
 
-const boxStylesData: BoxStyleItem[] = [
+export const boxStylesData: BoxStyleItem[] = [
   {
     id: "two-piece",
     num: "01",
@@ -107,11 +106,20 @@ const boxStylesData: BoxStyleItem[] = [
  * BoxStylesSection
  * "Packaging designed around your brand."
  * Positioned directly below the Free Quote Form Section.
- * - Desktop: 2-column layout matching Figma screenshots exactly
- *   - Left: Dark Navy (#041F49) block with rounded top-right corner (rounded-tr-[100px])
- *           Containing Eyebrow, 3-line Headline, Description, and Interactive 7-item Selector
- *   - Right: Showcase card with photographic image + Specs table (BOARD, BEST FOR, ADD)
- * - Mobile: Fully responsive stacked layout with touch-friendly selectors
+ * 100% faithful implementation of Figma Group 443 (1640 x 1158px) blueprint:
+ * - Group 431: Dark Navy (#041F49) block bleeding to the left edge of the screen (left: 0px),
+ *              with exact border-radius: 0px 270px 0px 0px (rounded-tr-[270px]).
+ * - Group 430: Left content lockup aligned with master grid container:
+ *              - Eyebrow: 7px gold diamond (#F2B329 rotate-45) + "BOX STYLES" (Libre Franklin 600, 11.5px, rgba(245,248,255,0.66), tracking 2.765px)
+ *              - Heading: Libre Franklin 300, 64px, line-height 65px, tracking -2.24px
+ *                         "Packaging" & "designed around" in #FFFFFF, "your brand." in italic #F2B329
+ *              - Description: Libre Franklin 350, 19.5px, line-height 31px, rgba(245,248,255,0.66)
+ *              - Tablist: 7 items, 72.69px row height, border rgba(245,248,255,0.14),
+ *                         Libre Franklin 300 20.8px, active #FFFFFF with 18x18px gold arrow SVG (#F2B329),
+ *                         inactive rgba(245,248,255,0.66).
+ * - Group 432: Right showcase card with border-radius: 30px (rounded-[30px]),
+ *              specs description (Libre Franklin 400, 15.7px #000000) and
+ *              specifications table (BOARD, BEST FOR, ADD in Libre Franklin 600 #F2B329 10.6px uppercase, values in 14.1px #000000).
  */
 export const BoxStylesSection: React.FC = () => {
   const [activeId, setActiveId] = useState<string>("two-piece");
@@ -123,142 +131,195 @@ export const BoxStylesSection: React.FC = () => {
     <section
       id="box-styles"
       aria-labelledby="box-styles-heading"
-      className="w-full bg-white py-14 sm:py-20 lg:py-24 border-b border-[#E5EBF5] shadow-[0_8px_30px_-6px_rgba(4,31,73,0.06)] relative z-10"
+      className="w-full bg-white relative overflow-hidden border-b border-[#E5EBF5] shadow-[0_8px_30px_-6px_rgba(4,31,73,0.06)] z-10"
     >
-      <div className="site-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-start">
+      <div className="site-container relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start py-14 sm:py-20 lg:py-[96px]">
           {/* =========================================================
-              LEFT COLUMN: Dark Navy Container with Iconic Top-Right Curve
+              LEFT COLUMN: Full-Bleed Dark Navy (#041F49) with 270px Curve
              ========================================================= */}
-          <div className="lg:col-span-6 xl:col-span-5 bg-[#041F49] rounded-2xl lg:rounded-tl-none rounded-tr-[70px] sm:rounded-tr-[90px] xl:rounded-tr-[110px] lg:rounded-bl-[36px] lg:rounded-br-none p-7 sm:p-10 lg:p-12 xl:p-14 text-white shadow-xl relative overflow-hidden">
-            {/* 1. Eyebrow */}
-            <div className="flex items-center gap-2 mb-3.5 select-none">
-              <div
-                className="w-[6px] h-[6px] bg-[#F2B329] rotate-45 shrink-0"
-                aria-hidden="true"
-              />
-              <span
-                className="text-[11px] font-bold uppercase tracking-[2.6px] text-white/70"
+          <div className="lg:col-span-6 xl:col-span-6 relative">
+            {/* Desktop Full-Bleed Navy Background extending from screen's left edge to right edge of column */}
+            <div
+              className="hidden lg:block absolute -top-[96px] -bottom-[96px] -left-[100vw] -right-8 xl:-right-14 bg-[#041F49] rounded-tr-[270px] z-0 pointer-events-none"
+              aria-hidden="true"
+            />
+            {/* Mobile / Tablet Navy Card Background */}
+            <div
+              className="lg:hidden absolute inset-0 bg-[#041F49] rounded-2xl rounded-tr-[100px] sm:rounded-tr-[140px] z-0 pointer-events-none"
+              aria-hidden="true"
+            />
+
+            {/* Left Content Lockup (Figma Group 430) */}
+            <div className="relative z-10 p-7 sm:p-10 lg:p-0 max-w-[490.34px]">
+              {/* 1. Eyebrow */}
+              <div className="flex items-center gap-2.5 mb-5 select-none">
+                <div
+                  className="w-[7px] h-[7px] bg-[#F2B329] rotate-45 shrink-0"
+                  aria-hidden="true"
+                />
+                <span
+                  className="text-[11.5px] font-semibold uppercase tracking-[2.765px] text-[rgba(245,248,255,0.66)]"
+                  style={{
+                    fontFamily:
+                      "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                    lineHeight: "19px",
+                  }}
+                >
+                  BOX STYLES
+                </span>
+              </div>
+
+              {/* 2. Heading: Libre Franklin 300, 64px, line-height 65px, tracking -2.24px */}
+              <h2
+                id="box-styles-heading"
+                className="text-[34px] sm:text-[44px] lg:text-[52px] xl:text-[64px] font-light text-white tracking-[-1.5px] xl:tracking-[-2.24px] leading-[1.06] xl:leading-[65px] mb-6 xl:mb-7"
+                style={{
+                  fontFamily:
+                    "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                  fontWeight: 300,
+                }}
+              >
+                Packaging
+                <br />
+                designed around
+                <br />
+                <span
+                  className="italic text-[#F2B329]"
+                  style={{
+                    fontFamily:
+                      "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                    fontWeight: 300,
+                  }}
+                >
+                  your brand.
+                </span>
+              </h2>
+
+              {/* 3. Description: Libre Franklin 350, 19.5px, line-height 31px */}
+              <p
+                className="text-[14px] sm:text-[16px] xl:text-[19.5px] font-[350] text-[rgba(245,248,255,0.66)] leading-[1.58] xl:leading-[31px] mb-8 xl:mb-11 max-w-[490px]"
                 style={{
                   fontFamily:
                     "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
                 }}
               >
-                BOX STYLES
-              </span>
-            </div>
+                From luxury rigid boxes to everyday shipping mailers, we build
+                custom designed boxes that protect your product and make the
+                first impression count. Pick a structure below, then we&apos;ll
+                size it, print it and finish it to suit.
+              </p>
 
-            {/* 2. Headline: 3-line Typographic Lockup matching Figma */}
-            <h2
-              id="box-styles-heading"
-              className="text-[34px] sm:text-[42px] lg:text-[46px] xl:text-[50px] font-normal text-white tracking-[-0.02em] leading-[1.08] mb-4 sm:mb-5"
-              style={{
-                fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
-              }}
-            >
-              Packaging
-              <br />
-              designed around
-              <br />
-              <span
-                className="italic text-[#F2B329]"
-                style={{
-                  fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
-                }}
+              {/* 4. Interactive 7-Item Box Styles Selector (Figma Tablist) */}
+              <div
+                role="tablist"
+                aria-label="Box styles selector"
+                className="w-full max-w-[488.89px] border-t border-[rgba(245,248,255,0.14)]"
               >
-                your brand.
-              </span>
-            </h2>
-
-            {/* 3. Description Paragraph */}
-            <p
-              className="text-[13px] sm:text-[14px] lg:text-[14.5px] text-[#C5D0E8] leading-[1.62] font-normal mb-8 sm:mb-10 max-w-[430px]"
-              style={{
-                fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
-              }}
-            >
-              From luxury rigid boxes to everyday shipping mailers, we build
-              custom designed boxes that protect your product and make the first
-              impression count. Pick a structure below, then we&apos;ll size it,
-              print it and finish it to suit.
-            </p>
-
-            {/* 4. Interactive 7-Item Box Styles List */}
-            <nav aria-label="Box styles selector" className="border-t border-white/10">
-              {boxStylesData.map((item) => {
-                const isActive = item.id === activeId;
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => setActiveId(item.id)}
-                    onMouseEnter={() => setActiveId(item.id)}
-                    className={`w-full py-3.5 sm:py-4 border-b border-white/10 flex items-center justify-between text-left transition-all duration-200 cursor-pointer group ${
-                      isActive ? "text-white" : "text-white/65 hover:text-white"
-                    }`}
-                  >
-                    <div className="flex items-center">
-                      <span
-                        className={`text-[11.5px] sm:text-[12.5px] font-mono tracking-wider mr-4 sm:mr-6 transition-colors ${
-                          isActive
-                            ? "text-[#F2B329] font-bold"
-                            : "text-white/40 group-hover:text-white/70"
-                        }`}
-                      >
-                        {item.num}
-                      </span>
-                      <span
-                        className={`text-[13.5px] sm:text-[15px] tracking-tight transition-colors ${
-                          isActive
-                            ? "text-white font-semibold"
-                            : "text-white/70 group-hover:text-white"
-                        }`}
-                        style={{
-                          fontFamily:
-                            "var(--font-figtree), 'Figtree', sans-serif",
-                        }}
-                      >
-                        {item.title}
-                      </span>
-                    </div>
-
-                    <ArrowRight
-                      className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F2B329] stroke-[2.5] transition-all duration-200 ${
+                {boxStylesData.map((item) => {
+                  const isActive = item.id === activeId;
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      onClick={() => setActiveId(item.id)}
+                      onMouseEnter={() => setActiveId(item.id)}
+                      className={`w-full h-[62px] xl:h-[72.69px] border-b border-[rgba(245,248,255,0.14)] flex items-center justify-between text-left transition-colors duration-200 cursor-pointer group ${
                         isActive
-                          ? "opacity-100 translate-x-0"
-                          : "opacity-0 -translate-x-2 group-hover:opacity-60 group-hover:translate-x-0"
+                          ? "text-white"
+                          : "text-[rgba(245,248,255,0.66)] hover:text-white"
                       }`}
-                    />
-                  </button>
-                );
-              })}
-            </nav>
+                    >
+                      <div className="flex items-center">
+                        <span
+                          className={`w-6 sm:w-8 text-[12px] transition-colors ${
+                            isActive
+                              ? "text-white font-normal"
+                              : "text-[rgba(245,248,255,0.66)] group-hover:text-white"
+                          }`}
+                          style={{
+                            fontFamily:
+                              "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                            letterSpacing: "0.72px",
+                            lineHeight: "19px",
+                          }}
+                        >
+                          {item.num}
+                        </span>
+                        <span
+                          className={`pl-5 sm:pl-8 text-[17px] sm:text-[19px] xl:text-[20.8px] transition-colors ${
+                            isActive
+                              ? "text-white font-light"
+                              : "text-[rgba(245,248,255,0.66)] group-hover:text-white"
+                          }`}
+                          style={{
+                            fontFamily:
+                              "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                            fontWeight: 300,
+                            letterSpacing: "-0.416px",
+                            lineHeight: "34px",
+                          }}
+                        >
+                          {item.title}
+                        </span>
+                      </div>
+
+                      {/* Figma Gold Arrow Indicator */}
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 18 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className={`transition-all duration-200 shrink-0 ${
+                          isActive
+                            ? "opacity-100 translate-x-0"
+                            : "opacity-0 -translate-x-2 group-hover:opacity-60 group-hover:translate-x-0"
+                        }`}
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M3.5 9H14.5M14.5 9L9.5 4M14.5 9L9.5 14"
+                          stroke="#F2B329"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
           {/* =========================================================
               RIGHT COLUMN: Showcase Photo Card + Specifications Table
              ========================================================= */}
-          <div className="lg:col-span-6 xl:col-span-7 flex flex-col justify-between w-full">
-            {/* Top Photographic Card */}
-            <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] xl:aspect-[16/11] rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#F2F0EB] shadow-[0_20px_50px_-10px_rgba(4,31,73,0.18),0_8px_24px_-4px_rgba(4,31,73,0.08)] border border-[#E5EBF5]">
+          <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-start w-full relative z-10 pt-2 lg:pt-0">
+            {/* Top Showcase Photo Card (Figma border-radius: 30px) */}
+            <div className="relative w-full aspect-[4/3] sm:aspect-[1.18/1] lg:aspect-[1.12/1] rounded-[30px] overflow-hidden bg-[#F2F0EB] shadow-[0_20px_50px_-10px_rgba(4,31,73,0.14),0_8px_24px_-4px_rgba(4,31,73,0.06)] border border-[#E5EBF5]">
               <Image
                 src={activeItem.image}
                 alt={activeItem.alt}
                 fill
-                sizes="(max-width: 1024px) 100vw, 55vw"
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover transition-opacity duration-300"
                 priority
               />
             </div>
 
-            {/* Bottom Specifications Block matching Figma */}
-            <div className="mt-6 sm:mt-8 pt-2 flex flex-col md:flex-row items-start justify-between gap-6 sm:gap-8">
+            {/* Bottom Specifications Block (Figma Group 432 & 429) */}
+            <div className="mt-7 sm:mt-9 xl:mt-11 flex flex-col md:flex-row items-start justify-between gap-6 sm:gap-8">
               {/* Left Description Paragraph */}
-              <div className="max-w-[340px]">
+              <div className="max-w-[340px] xl:max-w-[370px]">
                 <p
-                  className="text-[13.5px] sm:text-[14px] text-[#082E63] font-normal leading-[1.58]"
+                  className="text-[14.5px] sm:text-[15.7px] text-[#000000] font-normal leading-[25px]"
                   style={{
-                    fontFamily: "var(--font-figtree), 'Figtree', sans-serif",
+                    fontFamily:
+                      "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
                   }}
                 >
                   {activeItem.description}
@@ -266,51 +327,75 @@ export const BoxStylesSection: React.FC = () => {
               </div>
 
               {/* Right Specifications List (BOARD, BEST FOR, ADD) */}
-              <div className="space-y-2.5 sm:space-y-3 shrink-0 min-w-[260px] sm:min-w-[280px]">
+              <div className="min-w-[270px] sm:min-w-[300px] space-y-3 shrink-0">
                 {/* Row 1: BOARD */}
-                <div className="flex items-baseline gap-4 sm:gap-6">
+                <div className="flex items-baseline gap-5">
                   <span
-                    className="w-16 sm:w-18 text-[11px] font-bold text-[#F2B329] tracking-[1.5px] uppercase shrink-0"
+                    className="w-20 text-[10.6px] font-semibold text-[#F2B329] uppercase shrink-0"
+                    style={{
+                      fontFamily:
+                        "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                      letterSpacing: "2.112px",
+                      lineHeight: "17px",
+                    }}
+                  >
+                    BOARD
+                  </span>
+                  <span
+                    className="text-[14.1px] font-normal text-[#000000] leading-[23px]"
                     style={{
                       fontFamily:
                         "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
                     }}
                   >
-                    BOARD
-                  </span>
-                  <span className="text-[12.5px] sm:text-[13px] text-[#082E63]/90 font-medium">
                     {activeItem.board}
                   </span>
                 </div>
 
                 {/* Row 2: BEST FOR */}
-                <div className="flex items-baseline gap-4 sm:gap-6">
+                <div className="flex items-baseline gap-5">
                   <span
-                    className="w-16 sm:w-18 text-[11px] font-bold text-[#F2B329] tracking-[1.5px] uppercase shrink-0"
+                    className="w-20 text-[10.6px] font-semibold text-[#F2B329] uppercase shrink-0"
+                    style={{
+                      fontFamily:
+                        "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                      letterSpacing: "2.112px",
+                      lineHeight: "17px",
+                    }}
+                  >
+                    BEST FOR
+                  </span>
+                  <span
+                    className="text-[14.1px] font-normal text-[#000000] leading-[23px]"
                     style={{
                       fontFamily:
                         "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
                     }}
                   >
-                    BEST FOR
-                  </span>
-                  <span className="text-[12.5px] sm:text-[13px] text-[#082E63]/90 font-medium">
                     {activeItem.bestFor}
                   </span>
                 </div>
 
                 {/* Row 3: ADD */}
-                <div className="flex items-baseline gap-4 sm:gap-6">
+                <div className="flex items-baseline gap-5">
                   <span
-                    className="w-16 sm:w-18 text-[11px] font-bold text-[#F2B329] tracking-[1.5px] uppercase shrink-0"
+                    className="w-20 text-[10.6px] font-semibold text-[#F2B329] uppercase shrink-0"
+                    style={{
+                      fontFamily:
+                        "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
+                      letterSpacing: "2.112px",
+                      lineHeight: "17px",
+                    }}
+                  >
+                    ADD
+                  </span>
+                  <span
+                    className="text-[14.1px] font-normal text-[#000000] leading-[23px]"
                     style={{
                       fontFamily:
                         "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
                     }}
                   >
-                    ADD
-                  </span>
-                  <span className="text-[12.5px] sm:text-[13px] text-[#082E63]/90 font-medium">
                     {activeItem.add}
                   </span>
                 </div>
