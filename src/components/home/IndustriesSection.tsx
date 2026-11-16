@@ -140,7 +140,7 @@ export const IndustriesSection: React.FC = () => {
               Packaging for the way
               <br />
               <span
-                className="italic text-[#B5882D]"
+                className="italic text-[#F2B329]"
                 style={{
                   fontFamily:
                     "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
@@ -238,14 +238,14 @@ export const IndustriesSection: React.FC = () => {
         </div>
 
         {/* ════════════════════════════════════════════════════════════════
-            3. Bottom Slider / Progress Indicator Track
+            3. Bottom Slider / Progress Indicator Track (No grey part, yellow line)
            ════════════════════════════════════════════════════════════════ */}
         <div
-          className="mt-10 sm:mt-12 lg:mt-14 w-full h-[2.5px] bg-[#E5EBF5] rounded-full overflow-hidden relative"
+          className="mt-10 sm:mt-12 lg:mt-14 w-full relative"
           aria-hidden="true"
         >
           <div
-            className="h-full bg-[#B5882D] rounded-full transition-all duration-300 ease-out"
+            className="h-[3px] bg-[#F2B329] rounded-full transition-all duration-300 ease-out"
             style={{
               width: `${100 / (maxDesktopIndex + 1)}%`,
               transform: `translateX(${progressPercent * (maxDesktopIndex > 0 ? maxDesktopIndex : 1)}%)`,
