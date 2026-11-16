@@ -106,20 +106,13 @@ export const boxStylesData: BoxStyleItem[] = [
  * BoxStylesSection
  * "Packaging designed around your brand."
  * Positioned directly below the Free Quote Form Section.
- * 100% faithful implementation of Figma Group 443 (1640 x 1158px) blueprint:
- * - Group 431: Dark Navy (#041F49) block bleeding to the left edge of the screen (left: 0px),
- *              with exact border-radius: 0px 270px 0px 0px (rounded-tr-[270px]).
- * - Group 430: Left content lockup aligned with master grid container:
- *              - Eyebrow: 7px gold diamond (#F2B329 rotate-45) + "BOX STYLES" (Libre Franklin 600, 11.5px, rgba(245,248,255,0.66), tracking 2.765px)
- *              - Heading: Libre Franklin 300, 64px, line-height 65px, tracking -2.24px
- *                         "Packaging" & "designed around" in #FFFFFF, "your brand." in italic #F2B329
- *              - Description: Libre Franklin 350, 19.5px, line-height 31px, rgba(245,248,255,0.66)
- *              - Tablist: 7 items, 72.69px row height, border rgba(245,248,255,0.14),
- *                         Libre Franklin 300 20.8px, active #FFFFFF with 18x18px gold arrow SVG (#F2B329),
- *                         inactive rgba(245,248,255,0.66).
- * - Group 432: Right showcase card with border-radius: 30px (rounded-[30px]),
- *              specs description (Libre Franklin 400, 15.7px #000000) and
- *              specifications table (BOARD, BEST FOR, ADD in Libre Franklin 600 #F2B329 10.6px uppercase, values in 14.1px #000000).
+ * Fully responsive across Mobile, Tablet, Laptop, and Large Desktop viewports:
+ * - Desktop: Full-bleed Navy (#041F49) container extending to the screen's left edge,
+ *            with the exact Figma 270px top-right curve (rounded-tr-[270px]),
+ *            Libre Franklin 300 64px typography, and 72.69px interactive tab rows.
+ * - Mobile / Tablet: Refined dark navy card with signature top-right curve (rounded-tr-[90px] sm:rounded-tr-[140px]),
+ *                    breathable padding, touch-friendly tab selectors, and active state indicators.
+ * - Right Showcase: 30px rounded photo card with smooth dynamic image swap and structured specs table.
  */
 export const BoxStylesSection: React.FC = () => {
   const [activeId, setActiveId] = useState<string>("two-piece");
@@ -134,32 +127,32 @@ export const BoxStylesSection: React.FC = () => {
       className="w-full bg-white relative overflow-hidden border-b border-[#E5EBF5] shadow-[0_8px_30px_-6px_rgba(4,31,73,0.06)] z-10"
     >
       <div className="site-container relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start py-14 sm:py-20 lg:py-[96px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 xl:gap-16 items-start py-10 sm:py-16 lg:py-[96px]">
           {/* =========================================================
-              LEFT COLUMN: Full-Bleed Dark Navy (#041F49) with 270px Curve
+              LEFT COLUMN: Full-Bleed Dark Navy (#041F49) on Desktop
              ========================================================= */}
           <div className="lg:col-span-6 xl:col-span-6 relative">
-            {/* Desktop Full-Bleed Navy Background extending from screen's left edge to right edge of column */}
+            {/* Desktop Full-Bleed Navy Background extending from screen's left edge */}
             <div
-              className="hidden lg:block absolute -top-[96px] -bottom-[96px] -left-[100vw] -right-8 xl:-right-14 bg-[#041F49] rounded-tr-[270px] z-0 pointer-events-none"
+              className="hidden lg:block absolute -top-[96px] -bottom-[96px] -left-[100vw] -right-8 xl:-right-12 2xl:-right-16 bg-[#041F49] rounded-tr-[200px] xl:rounded-tr-[240px] 2xl:rounded-tr-[270px] z-0 pointer-events-none"
               aria-hidden="true"
             />
             {/* Mobile / Tablet Navy Card Background */}
             <div
-              className="lg:hidden absolute inset-0 bg-[#041F49] rounded-2xl rounded-tr-[100px] sm:rounded-tr-[140px] z-0 pointer-events-none"
+              className="lg:hidden absolute inset-0 bg-[#041F49] rounded-2xl rounded-tr-[90px] sm:rounded-tr-[140px] z-0 pointer-events-none shadow-xl"
               aria-hidden="true"
             />
 
             {/* Left Content Lockup (Figma Group 430) */}
-            <div className="relative z-10 p-7 sm:p-10 lg:p-0 max-w-[490.34px]">
+            <div className="relative z-10 p-5 sm:p-8 lg:p-0 max-w-[490.34px] mx-auto lg:mx-0">
               {/* 1. Eyebrow */}
-              <div className="flex items-center gap-2.5 mb-5 select-none">
+              <div className="flex items-center gap-2.5 mb-3.5 sm:mb-5 select-none">
                 <div
                   className="w-[7px] h-[7px] bg-[#F2B329] rotate-45 shrink-0"
                   aria-hidden="true"
                 />
                 <span
-                  className="text-[11.5px] font-semibold uppercase tracking-[2.765px] text-[rgba(245,248,255,0.66)]"
+                  className="text-[11px] sm:text-[11.5px] font-semibold uppercase tracking-[2.765px] text-[rgba(245,248,255,0.66)]"
                   style={{
                     fontFamily:
                       "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
@@ -170,10 +163,10 @@ export const BoxStylesSection: React.FC = () => {
                 </span>
               </div>
 
-              {/* 2. Heading: Libre Franklin 300, 64px, line-height 65px, tracking -2.24px */}
+              {/* 2. Heading: Libre Franklin 300, Fluid scale from mobile to 64px desktop */}
               <h2
                 id="box-styles-heading"
-                className="text-[34px] sm:text-[44px] lg:text-[52px] xl:text-[64px] font-light text-white tracking-[-1.5px] xl:tracking-[-2.24px] leading-[1.06] xl:leading-[65px] mb-6 xl:mb-7"
+                className="text-[32px] sm:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-[64px] font-light text-white tracking-[-1.2px] sm:tracking-[-1.6px] xl:tracking-[-2.24px] leading-[1.08] xl:leading-[65px] mb-4 sm:mb-6 xl:mb-7"
                 style={{
                   fontFamily:
                     "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
@@ -196,9 +189,9 @@ export const BoxStylesSection: React.FC = () => {
                 </span>
               </h2>
 
-              {/* 3. Description: Libre Franklin 350, 19.5px, line-height 31px */}
+              {/* 3. Description: Libre Franklin 350, Fluid scale from mobile to 19.5px */}
               <p
-                className="text-[14px] sm:text-[16px] xl:text-[19.5px] font-[350] text-[rgba(245,248,255,0.66)] leading-[1.58] xl:leading-[31px] mb-8 xl:mb-11 max-w-[490px]"
+                className="text-[13.5px] sm:text-[15px] xl:text-[19.5px] font-[350] text-[rgba(245,248,255,0.66)] leading-[1.6] xl:leading-[31px] mb-6 sm:mb-8 xl:mb-11 max-w-[490px]"
                 style={{
                   fontFamily:
                     "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
@@ -226,15 +219,15 @@ export const BoxStylesSection: React.FC = () => {
                       aria-selected={isActive}
                       onClick={() => setActiveId(item.id)}
                       onMouseEnter={() => setActiveId(item.id)}
-                      className={`w-full h-[62px] xl:h-[72.69px] border-b border-[rgba(245,248,255,0.14)] flex items-center justify-between text-left transition-colors duration-200 cursor-pointer group ${
+                      className={`w-full h-[52px] sm:h-[62px] xl:h-[72.69px] border-b border-[rgba(245,248,255,0.14)] flex items-center justify-between text-left transition-colors duration-200 cursor-pointer group px-1 sm:px-0 ${
                         isActive
-                          ? "text-white"
+                          ? "text-white bg-white/[0.04] sm:bg-transparent rounded-lg sm:rounded-none px-2 sm:px-0"
                           : "text-[rgba(245,248,255,0.66)] hover:text-white"
                       }`}
                     >
-                      <div className="flex items-center">
+                      <div className="flex items-center min-w-0 pr-2">
                         <span
-                          className={`w-6 sm:w-8 text-[12px] transition-colors ${
+                          className={`w-5 sm:w-7 text-[11px] sm:text-[12px] shrink-0 transition-colors ${
                             isActive
                               ? "text-white font-normal"
                               : "text-[rgba(245,248,255,0.66)] group-hover:text-white"
@@ -249,7 +242,7 @@ export const BoxStylesSection: React.FC = () => {
                           {item.num}
                         </span>
                         <span
-                          className={`pl-5 sm:pl-8 text-[17px] sm:text-[19px] xl:text-[20.8px] transition-colors ${
+                          className={`pl-3 sm:pl-6 xl:pl-8 text-[14.5px] sm:text-[17px] lg:text-[18px] xl:text-[20.8px] truncate transition-colors ${
                             isActive
                               ? "text-white font-light"
                               : "text-[rgba(245,248,255,0.66)] group-hover:text-white"
@@ -292,15 +285,34 @@ export const BoxStylesSection: React.FC = () => {
                   );
                 })}
               </div>
+
+              {/* Mobile Quick Action Indicator: Prompts user to view active selection below */}
+              <div className="mt-4 pt-2.5 flex items-center justify-between text-white/60 text-[11.5px] lg:hidden border-t border-white/10">
+                <span>
+                  Selected:{" "}
+                  <strong className="text-[#F2B329] font-medium">
+                    {activeItem.title}
+                  </strong>
+                </span>
+                <a
+                  href="#box-styles-showcase"
+                  className="text-[#F2B329] hover:underline flex items-center gap-1 font-medium"
+                >
+                  View mockup & specs ↓
+                </a>
+              </div>
             </div>
           </div>
 
           {/* =========================================================
               RIGHT COLUMN: Showcase Photo Card + Specifications Table
              ========================================================= */}
-          <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-start w-full relative z-10 pt-2 lg:pt-0">
+          <div
+            id="box-styles-showcase"
+            className="lg:col-span-6 xl:col-span-6 flex flex-col justify-start w-full max-w-[775px] mx-auto lg:mx-0 relative z-10 pt-4 lg:pt-0"
+          >
             {/* Top Showcase Photo Card (Figma border-radius: 30px) */}
-            <div className="relative w-full aspect-[4/3] sm:aspect-[1.18/1] lg:aspect-[1.12/1] rounded-[30px] overflow-hidden bg-[#F2F0EB] shadow-[0_20px_50px_-10px_rgba(4,31,73,0.14),0_8px_24px_-4px_rgba(4,31,73,0.06)] border border-[#E5EBF5]">
+            <div className="relative w-full aspect-[4/3] sm:aspect-[1.18/1] lg:aspect-[1.12/1] rounded-[24px] sm:rounded-[30px] overflow-hidden bg-[#F2F0EB] shadow-[0_20px_50px_-10px_rgba(4,31,73,0.14),0_8px_24px_-4px_rgba(4,31,73,0.06)] border border-[#E5EBF5]">
               <Image
                 src={activeItem.image}
                 alt={activeItem.alt}
@@ -312,11 +324,11 @@ export const BoxStylesSection: React.FC = () => {
             </div>
 
             {/* Bottom Specifications Block (Figma Group 432 & 429) */}
-            <div className="mt-7 sm:mt-9 xl:mt-11 flex flex-col md:flex-row items-start justify-between gap-6 sm:gap-8">
+            <div className="mt-6 sm:mt-8 xl:mt-11 flex flex-col sm:flex-row items-start justify-between gap-6 sm:gap-8">
               {/* Left Description Paragraph */}
               <div className="max-w-[340px] xl:max-w-[370px]">
                 <p
-                  className="text-[14.5px] sm:text-[15.7px] text-[#000000] font-normal leading-[25px]"
+                  className="text-[14px] sm:text-[15.7px] text-[#000000] font-normal leading-[23px] sm:leading-[25px]"
                   style={{
                     fontFamily:
                       "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
@@ -327,11 +339,11 @@ export const BoxStylesSection: React.FC = () => {
               </div>
 
               {/* Right Specifications List (BOARD, BEST FOR, ADD) */}
-              <div className="min-w-[270px] sm:min-w-[300px] space-y-3 shrink-0">
+              <div className="w-full sm:w-auto min-w-[260px] sm:min-w-[300px] space-y-2.5 sm:space-y-3 shrink-0">
                 {/* Row 1: BOARD */}
-                <div className="flex items-baseline gap-5">
+                <div className="flex items-baseline gap-4 sm:gap-5">
                   <span
-                    className="w-20 text-[10.6px] font-semibold text-[#F2B329] uppercase shrink-0"
+                    className="w-18 sm:w-20 text-[10.5px] sm:text-[10.6px] font-semibold text-[#F2B329] uppercase shrink-0"
                     style={{
                       fontFamily:
                         "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
@@ -342,7 +354,7 @@ export const BoxStylesSection: React.FC = () => {
                     BOARD
                   </span>
                   <span
-                    className="text-[14.1px] font-normal text-[#000000] leading-[23px]"
+                    className="text-[13.5px] sm:text-[14.1px] font-normal text-[#000000] leading-[22px] sm:leading-[23px]"
                     style={{
                       fontFamily:
                         "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
@@ -353,9 +365,9 @@ export const BoxStylesSection: React.FC = () => {
                 </div>
 
                 {/* Row 2: BEST FOR */}
-                <div className="flex items-baseline gap-5">
+                <div className="flex items-baseline gap-4 sm:gap-5">
                   <span
-                    className="w-20 text-[10.6px] font-semibold text-[#F2B329] uppercase shrink-0"
+                    className="w-18 sm:w-20 text-[10.5px] sm:text-[10.6px] font-semibold text-[#F2B329] uppercase shrink-0"
                     style={{
                       fontFamily:
                         "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
@@ -366,7 +378,7 @@ export const BoxStylesSection: React.FC = () => {
                     BEST FOR
                   </span>
                   <span
-                    className="text-[14.1px] font-normal text-[#000000] leading-[23px]"
+                    className="text-[13.5px] sm:text-[14.1px] font-normal text-[#000000] leading-[22px] sm:leading-[23px]"
                     style={{
                       fontFamily:
                         "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
@@ -377,9 +389,9 @@ export const BoxStylesSection: React.FC = () => {
                 </div>
 
                 {/* Row 3: ADD */}
-                <div className="flex items-baseline gap-5">
+                <div className="flex items-baseline gap-4 sm:gap-5">
                   <span
-                    className="w-20 text-[10.6px] font-semibold text-[#F2B329] uppercase shrink-0"
+                    className="w-18 sm:w-20 text-[10.5px] sm:text-[10.6px] font-semibold text-[#F2B329] uppercase shrink-0"
                     style={{
                       fontFamily:
                         "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
@@ -390,7 +402,7 @@ export const BoxStylesSection: React.FC = () => {
                     ADD
                   </span>
                   <span
-                    className="text-[14.1px] font-normal text-[#000000] leading-[23px]"
+                    className="text-[13.5px] sm:text-[14.1px] font-normal text-[#000000] leading-[22px] sm:leading-[23px]"
                     style={{
                       fontFamily:
                         "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
