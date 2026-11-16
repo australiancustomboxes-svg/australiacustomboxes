@@ -3,120 +3,35 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-export interface BoxStyleItem {
+export interface BoxStyleTab {
   id: string;
   num: string;
   title: string;
-  image: string;
-  alt: string;
-  description: string;
-  board: string;
-  bestFor: string;
-  add: string;
 }
 
-export const boxStylesData: BoxStyleItem[] = [
-  {
-    id: "two-piece",
-    num: "01",
-    title: "Two-Piece Box Style",
-    image: "/images/box-styles/two-piece-box-style.webp",
-    alt: "Custom Two-Piece Rigid Box Style with Gold Tray for Jewellery and Luxury Packaging",
-    description:
-      "A separate lid and base in wrapped rigid board. The classic for jewellery, watches and gift sets.",
-    board: "Rigid greyboard, paper wrapped",
-    bestFor: "Jewellery, watches, gift sets",
-    add: "Foil, insert, ribbon",
-  },
-  {
-    id: "gable-box",
-    num: "02",
-    title: "Gable Box Style",
-    image: "/images/box-styles/gable-box-style.webp",
-    alt: "Custom Gable Box Style with Built-in Handle for Takeaways and Events",
-    description:
-      "Convenient integrated carry handle on top with auto-locking bottom. Ideal for food, takeaways and event hampers.",
-    board: "Corrugated E-flute or Kraft paperboard",
-    bestFor: "Takeaways, bakery, event hampers",
-    add: "Window cutout, custom handles",
-  },
-  {
-    id: "tuck-top",
-    num: "03",
-    title: "Tuck Top Box Style",
-    image: "/images/box-styles/tuck-top-box-style.webp",
-    alt: "Custom Tuck Top Box Style for Retail Products",
-    description:
-      "Classic tuck-top folding carton for retail displays and lightweight merchandise. Simple, clean, and quick to pack.",
-    board: "SBS paperboard or recycled kraft",
-    bestFor: "Cosmetics, candles, pharmaceuticals",
-    add: "Embossing, spot UV, matte lamination",
-  },
-  {
-    id: "6-corners",
-    num: "04",
-    title: "6 Corners Box Styles",
-    image: "/images/box-styles/6-corners-box-style.webp",
-    alt: "Custom 6 Corners Box Style with Attached Hinged Lid",
-    description:
-      "Collapsible pre-glued tray with attached lid that pops open instantly. Heavy-duty presentation for bulk bakery and gift packs.",
-    board: "Heavy kraft or folding boxboard",
-    bestFor: "Donuts, apparel, luxury patisserie",
-    add: "Window patch, greaseproof lining",
-  },
-  {
-    id: "mailer-box",
-    num: "05",
-    title: "Mailer Box Style",
-    image: "/images/box-styles/mailer-box-style.webp",
-    alt: "Custom Mailer Box Style for E-commerce Postal Shipping",
-    description:
-      "Tuck-front corrugated shipping box engineered to withstand postal transit and deliver an unforgettable branded unboxing experience.",
-    board: "Corrugated flute (E-flute, B-flute)",
-    bestFor: "E-commerce, subscription boxes, PR kits",
-    add: "Inside printing, custom foam insert",
-  },
-  {
-    id: "auto-lock",
-    num: "06",
-    title: "Auto Lock Box Style",
-    image: "/images/box-styles/auto-lock-box-style.webp",
-    alt: "Custom Auto Lock Bottom Box Style for Fast Packing",
-    description:
-      "Bottom automatically snaps into locked position in one movement, dramatically speeding up high-volume packing operations.",
-    board: "Corrugated board or rigid paperboard",
-    bestFor: "Heavy retail goods, bottles, wholesale",
-    add: "Reinforced base, security tape",
-  },
-  {
-    id: "hang-tab",
-    num: "07",
-    title: "Hang Tab Box Style",
-    image: "/images/box-styles/hang-tab-box-style.webp",
-    alt: "Custom Hang Tab Box Style with Hanging Slot for Retail Peg Hooks",
-    description:
-      "Retail hanging packaging featuring a punched Euro-hole or delta tab for high visibility on retail peg-hook displays.",
-    board: "SBS paperboard with gloss or matte finish",
-    bestFor: "Accessories, cosmetics, retail peg items",
-    add: "Clear acetate window, foil stamping",
-  },
+export const boxStylesList: BoxStyleTab[] = [
+  { id: "01", num: "01", title: "Two-Piece Box Style" },
+  { id: "02", num: "02", title: "Gable Box Style" },
+  { id: "03", num: "03", title: "Tuck Top Box Style" },
+  { id: "04", num: "04", title: "6 Corners Box Styles" },
+  { id: "05", num: "05", title: "Mailer Box Style" },
+  { id: "06", num: "06", title: "Auto Lock Box Style" },
+  { id: "07", num: "07", title: "Hang Tab Box Style" },
 ];
 
 /**
  * BoxStylesSection
  * "Packaging designed around your brand."
  * Positioned directly below the Free Quote Form Section.
- * Symmetrical, balanced 2-column layout matching Figma design system:
- * - Equal Left & Right Spacing: Centered master container with balanced margins across all desktop resolutions.
- * - Left Column: Dark Navy (#041F49) Card with signature top-right curve (rounded-tr-[160px] to [240px]),
- *   housing Eyebrow, 3-line Headline, Description, and interactive 7-item selector.
- * - Right Column: Full-width photographic showcase card with 30px rounded corners and specifications table below.
+ * Exact 1:1 Implementation of Figma Screenshot (Group 443):
+ * - Left Column: Dark Navy (#041F49) Card with signature top-right sweep curve (rounded-tr-[160px] to [240px]),
+ *   Eyebrow, 3-line Headline, Description, and 7 Box Styles tab list with 01 Two-Piece Box Style active.
+ * - Right Column: Fixed Two-Piece Box Style showcase photo card (30px border-radius) + Specifications block below
+ *   (Rigid greyboard, jewellery/watches, foil/insert/ribbon).
+ * - Equal Left and Right Spacing: Balanced master container across desktop and mobile.
  */
 export const BoxStylesSection: React.FC = () => {
-  const [activeId, setActiveId] = useState<string>("two-piece");
-
-  const activeItem =
-    boxStylesData.find((item) => item.id === activeId) || boxStylesData[0];
+  const [activeTabId, setActiveTabId] = useState<string>("01");
 
   return (
     <section
@@ -189,22 +104,21 @@ export const BoxStylesSection: React.FC = () => {
               size it, print it and finish it to suit.
             </p>
 
-            {/* 4. Interactive 7-Item Box Styles Selector */}
+            {/* 4. 7-Item Box Styles Selector (Matching Figma Exactly) */}
             <div
               role="tablist"
               aria-label="Box styles selector"
               className="w-full border-t border-[rgba(245,248,255,0.14)]"
             >
-              {boxStylesData.map((item) => {
-                const isActive = item.id === activeId;
+              {boxStylesList.map((item) => {
+                const isActive = item.id === activeTabId;
                 return (
                   <button
                     key={item.id}
                     type="button"
                     role="tab"
                     aria-selected={isActive}
-                    onClick={() => setActiveId(item.id)}
-                    onMouseEnter={() => setActiveId(item.id)}
+                    onClick={() => setActiveTabId(item.id)}
                     className={`w-full h-[54px] sm:h-[62px] xl:h-[68px] border-b border-[rgba(245,248,255,0.14)] flex items-center justify-between text-left transition-colors duration-200 cursor-pointer group ${
                       isActive
                         ? "text-white"
@@ -245,7 +159,7 @@ export const BoxStylesSection: React.FC = () => {
                       </span>
                     </div>
 
-                    {/* Gold Arrow SVG */}
+                    {/* Gold Arrow SVG on Active Tab */}
                     <svg
                       width="18"
                       height="18"
@@ -274,17 +188,18 @@ export const BoxStylesSection: React.FC = () => {
           </div>
 
           {/* =========================================================
-              RIGHT COLUMN: Showcase Photo Card + Specifications Table
+              RIGHT COLUMN: Fixed Showcase Photo Card + Specifications Table
+              (Exact Two-Piece Box Style from Figma)
              ========================================================= */}
           <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-start w-full relative">
             {/* Top Showcase Photo Card (Figma border-radius: 30px) */}
             <div className="relative w-full aspect-[4/3] sm:aspect-[1.18/1] lg:aspect-[1.15/1] xl:aspect-[775/650] rounded-[24px] sm:rounded-[30px] overflow-hidden bg-[#F2F0EB] shadow-[0_20px_50px_-10px_rgba(4,31,73,0.14)] border border-[#E5EBF5]">
               <Image
-                src={activeItem.image}
-                alt={activeItem.alt}
+                src="/images/box-styles/Two-Piece Box Style.webp"
+                alt="Custom Two-Piece Rigid Box Style with Gold Tray for Jewellery and Luxury Packaging"
                 fill
                 sizes="(max-width: 1024px) 100vw, 58vw"
-                className="object-cover transition-opacity duration-300"
+                className="object-cover"
                 priority
               />
             </div>
@@ -300,7 +215,8 @@ export const BoxStylesSection: React.FC = () => {
                       "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
                   }}
                 >
-                  {activeItem.description}
+                  A separate lid and base in wrapped rigid board. The classic
+                  for jewellery, watches and gift sets.
                 </p>
               </div>
 
@@ -326,7 +242,7 @@ export const BoxStylesSection: React.FC = () => {
                         "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
                     }}
                   >
-                    {activeItem.board}
+                    Rigid greyboard, paper wrapped
                   </span>
                 </div>
 
@@ -350,7 +266,7 @@ export const BoxStylesSection: React.FC = () => {
                         "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
                     }}
                   >
-                    {activeItem.bestFor}
+                    Jewellery, watches, gift sets
                   </span>
                 </div>
 
@@ -374,7 +290,7 @@ export const BoxStylesSection: React.FC = () => {
                         "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
                     }}
                   >
-                    {activeItem.add}
+                    Foil, insert, ribbon
                   </span>
                 </div>
               </div>
