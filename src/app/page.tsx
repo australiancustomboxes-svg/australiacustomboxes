@@ -6,6 +6,7 @@ import {
   BoxStylesSection,
   IndustriesSection,
   WhyACBSection,
+  SustainabilitySection,
 } from "@/components/home";
 
 export default function Home() {
@@ -31,6 +32,9 @@ export default function Home() {
 
       {/* 7. Why ACB Section: "We don't just make boxes. We make brands look better." */}
       <WhyACBSection />
+
+      {/* 8. Sustainability Section: "Better packaging. Better future." */}
+      <SustainabilitySection />
 
       {/* Spacing for bottom section drop shadow */}
       <div className="w-full h-14 bg-white" aria-hidden="true" />
