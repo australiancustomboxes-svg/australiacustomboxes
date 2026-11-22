@@ -19,8 +19,8 @@ export const industriesData: IndustryCardItem[] = [
     title: "Food & Beverage",
     description:
       "Food-safe custom product boxes that stay strong on the shelf and in the delivery bag.",
-    image: "/images/industries/food-granola.webp",
-    alt: "Custom ACB Cereal Granola Display Box Packaging",
+    image: "/images/industries/ind-slide-1.webp",
+    alt: "Custom Food & Beverage Cereal Packaging Box",
   },
   {
     id: "food-beverage-2",
@@ -28,8 +28,8 @@ export const industriesData: IndustryCardItem[] = [
     title: "Food & Beverage",
     description:
       "Food-safe custom product boxes that stay strong on the shelf and in the delivery bag.",
-    image: "/images/industries/food-macaron.webp",
-    alt: "Custom Macaron Bakery Packaging Box with Window",
+    image: "/images/industries/ind-slide-2.webp",
+    alt: "Custom Macaron Packaging Box",
   },
   {
     id: "food-beverage-3",
@@ -37,35 +37,35 @@ export const industriesData: IndustryCardItem[] = [
     title: "Food & Beverage",
     description:
       "Food-safe custom product boxes that stay strong on the shelf and in the delivery bag.",
-    image: "/images/industries/food-mailer.webp",
-    alt: "Custom ACB Gourmet Product Mailer Box Packaging",
+    image: "/images/industries/ind-slide-3.webp",
+    alt: "Custom Mailer Packaging Box",
   },
   {
-    id: "burger-packaging",
-    tag: "FAST FOOD · TAKEAWAY",
-    title: "Burger & Takeaway",
+    id: "food-beverage-4",
+    tag: "BAKERY · CAFE",
+    title: "Sandwich & Bakery",
     description:
-      "Heavy-duty food-grade burger boxes with greaseproof coatings for busy Aussie takeaway kitchens.",
-    image: "/images/industries/food-burger.webp",
-    alt: "Custom Luxury Burger Box Packaging",
+      "Clear-window food grade packaging keeping fresh sandwiches and pastries on display.",
+    image: "/images/industries/food-sandwich.webp",
+    alt: "Custom Sandwich Packaging Boxes with Window",
   },
   {
-    id: "pizza-packaging",
-    tag: "PIZZA · CORRUGATED",
-    title: "Pizza & Delivery",
+    id: "food-beverage-5",
+    tag: "CRISPY CHICKEN · MEALS",
+    title: "Fried Chicken Takeaway",
     description:
-      "Corrugated fluted pizza boxes with thermal steam vents that keep crusts crispy on long deliveries.",
-    image: "/images/industries/food-pizza.webp",
-    alt: "Custom Printed Pizza Delivery Boxes",
+      "Grease-resistant ventilation cartons for hot fried chicken and family meal packs.",
+    image: "/images/industries/food-chicken.webp",
+    alt: "Custom Fried Chicken Takeaway Packaging Boxes",
   },
   {
-    id: "fries-packaging",
-    tag: "STREET FOOD · SNACKS",
-    title: "French Fries & Snacks",
+    id: "food-beverage-6",
+    tag: "EVENTS · CINEMA",
+    title: "Popcorn & Concessions",
     description:
-      "Easy-hold scoop and pop-up fry boxes designed for fast-paced service and clean eating.",
-    image: "/images/industries/food-fries.webp",
-    alt: "Custom French Fries Packaging Boxes",
+      "Grease-resistant open-top popcorn cartons for cinema, concessions, and food trucks.",
+    image: "/images/industries/food-popcorn.webp",
+    alt: "Custom Popcorn Packaging Boxes",
   },
 ];
 
@@ -262,7 +262,7 @@ export const IndustriesSection: React.FC = () => {
 function IndustryCard({ item }: { item: IndustryCardItem }) {
   return (
     <article
-      className="relative w-full aspect-[3/3.8] rounded-[28px] lg:rounded-[32px] overflow-hidden bg-[#F2F0EB] shadow-[0_12px_36px_-6px_rgba(4,31,73,0.12)] hover:shadow-[0_24px_54px_-8px_rgba(4,31,73,0.22)] transition-all duration-300 group flex flex-col justify-end"
+      className="relative w-full aspect-[3/3.2] rounded-[24px] lg:rounded-[28px] overflow-hidden bg-[#F2F0EB] shadow-[0_12px_36px_-6px_rgba(4,31,73,0.12)] hover:shadow-[0_24px_54px_-8px_rgba(4,31,73,0.22)] transition-all duration-300 group flex flex-col justify-end"
     >
       {/* Background photographic product mockup */}
       <Image
@@ -273,9 +273,9 @@ function IndustryCard({ item }: { item: IndustryCardItem }) {
         className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
       />
 
-      {/* Deep Navy Gradient Overlay — starts below the product box */}
+      {/* Deep Navy Gradient Overlay — smooth fade for bottom text up to yellow eyebrow */}
       <div
-        className="absolute inset-x-0 bottom-0 top-[48%] bg-gradient-to-t from-[#041F49] from-45% via-[#041F49]/85 via-75% to-transparent pointer-events-none"
+        className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[#041F49] via-[#041F49]/85 from-40% to-transparent pointer-events-none"
         aria-hidden="true"
       />
 
