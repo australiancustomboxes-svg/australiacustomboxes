@@ -10,6 +10,7 @@ import {
   PortfolioSection,
   QuoteCtaSection,
   CustomisationSection,
+  HowItWorksSection,
 } from "@/components/home";
 
 export default function Home() {
@@ -47,6 +48,9 @@ export default function Home() {
 
       {/* 11. Customisation Section: "Make Your Paperboard Boxes uniquely Yours." */}
       <CustomisationSection />
+
+      {/* 12. How It Works Section: "From idea to doorstep in five simple steps." */}
+      <HowItWorksSection />
 
       {/* Spacing for bottom section drop shadow */}
       <div className="w-full h-14 bg-white" aria-hidden="true" />
