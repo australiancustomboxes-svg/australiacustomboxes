@@ -18,3 +18,4 @@ export * from "../QuoteCtaSection";
 export * from "../CustomisationSection";
 export * from "../HowItWorksSection";
 export * from "../FaqSection";
+export * from "../CustomerReviewsSection";

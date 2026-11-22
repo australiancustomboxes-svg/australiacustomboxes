@@ -242,7 +242,7 @@ export const FaqSection: React.FC = () => {
           <div>{renderFaqColumn(leftFaqItems)}</div>
 
           {/* Column 2: Items 06 - 10 */}
-          <div className="mt-0">{renderFaqColumn(rightFaqItems)}</div>
+          <div className="mt-0 max-lg:-mt-[1px]">{renderFaqColumn(rightFaqItems)}</div>
         </div>
       </div>
     </section>
