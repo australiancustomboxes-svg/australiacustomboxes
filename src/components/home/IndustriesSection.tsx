@@ -19,8 +19,8 @@ export const industriesData: IndustryCardItem[] = [
     title: "Food & Beverage",
     description:
       "Food-safe custom product boxes that stay strong on the shelf and in the delivery bag.",
-    image: "/images/industries/card-ecopack.webp",
-    alt: "Custom EcoPack Natural Gift Box Set Packaging",
+    image: "/images/industries/food-granola.webp",
+    alt: "Custom ACB Cereal Granola Display Box Packaging",
   },
   {
     id: "food-beverage-2",
@@ -28,8 +28,8 @@ export const industriesData: IndustryCardItem[] = [
     title: "Food & Beverage",
     description:
       "Food-safe custom product boxes that stay strong on the shelf and in the delivery bag.",
-    image: "/images/industries/card-ecowrap.webp",
-    alt: "Custom EcoWrap Sustainable Gift Box Packaging",
+    image: "/images/industries/food-macaron.webp",
+    alt: "Custom Macaron Bakery Packaging Box with Window",
   },
   {
     id: "food-beverage-3",
@@ -37,35 +37,35 @@ export const industriesData: IndustryCardItem[] = [
     title: "Food & Beverage",
     description:
       "Food-safe custom product boxes that stay strong on the shelf and in the delivery bag.",
-    image: "/images/industries/card-lumora.webp",
-    alt: "Custom Lumora Candle Box Packaging",
+    image: "/images/industries/food-mailer.webp",
+    alt: "Custom ACB Gourmet Product Mailer Box Packaging",
   },
   {
-    id: "candles-fragrance",
-    tag: "CANDLES · AROMATHERAPY",
-    title: "Candles & Fragrance",
+    id: "burger-packaging",
+    tag: "FAST FOOD · TAKEAWAY",
+    title: "Burger & Takeaway",
     description:
-      "Luxury rigid and folding cartons engineered for heat, weight, and premium retail presentation.",
-    image: "/images/products/Premium ACB Candle Packaging Mockup.webp",
-    alt: "Custom Scented Candle Packaging Boxes",
+      "Heavy-duty food-grade burger boxes with greaseproof coatings for busy Aussie takeaway kitchens.",
+    image: "/images/industries/food-burger.webp",
+    alt: "Custom Luxury Burger Box Packaging",
   },
   {
-    id: "ecommerce-mailers",
-    tag: "SHIPPING · SUBSCRIPTION",
-    title: "E-Commerce & Retail",
+    id: "pizza-packaging",
+    tag: "PIZZA · CORRUGATED",
+    title: "Pizza & Delivery",
     description:
-      "Unboxing-ready shipping mailers that protect fragile contents across Australia-wide transit.",
-    image: "/images/products/mailer-boxes.webp",
-    alt: "Custom E-Commerce Shipping Mailer Boxes",
+      "Corrugated fluted pizza boxes with thermal steam vents that keep crusts crispy on long deliveries.",
+    image: "/images/industries/food-pizza.webp",
+    alt: "Custom Printed Pizza Delivery Boxes",
   },
   {
-    id: "luxury-jewellery",
-    tag: "JEWELLERY · WATCHES",
-    title: "Jewellery & Luxury",
+    id: "fries-packaging",
+    tag: "STREET FOOD · SNACKS",
+    title: "French Fries & Snacks",
     description:
-      "High-density rigid gift boxes with custom velvet inserts, ribbon pulls, and gold foil stamping.",
-    image: "/images/box-styles/Two-Piece Box Style.webp",
-    alt: "Custom Two-Piece Rigid Jewellery Box",
+      "Easy-hold scoop and pop-up fry boxes designed for fast-paced service and clean eating.",
+    image: "/images/industries/food-fries.webp",
+    alt: "Custom French Fries Packaging Boxes",
   },
 ];
 
