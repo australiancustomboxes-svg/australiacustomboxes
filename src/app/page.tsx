@@ -13,6 +13,7 @@ import {
   HowItWorksSection,
   FaqSection,
   CustomerReviewsSection,
+  BlogResourcesSection,
 } from "@/components/home";
 
 export default function Home() {
@@ -59,6 +60,9 @@ export default function Home() {
 
       {/* 14. Customer Reviews Section: "What customers say" */}
       <CustomerReviewsSection />
+
+      {/* 15. Packaging Resources / Blog Section: "Guides to help you package smarter." */}
+      <BlogResourcesSection />
 
       {/* Spacing for bottom section drop shadow */}
       <div className="w-full h-14 bg-white" aria-hidden="true" />
