@@ -11,6 +11,7 @@ import {
   QuoteCtaSection,
   CustomisationSection,
   HowItWorksSection,
+  FaqSection,
 } from "@/components/home";
 
 export default function Home() {
@@ -51,6 +52,9 @@ export default function Home() {
 
       {/* 12. How It Works Section: "From idea to doorstep in five simple steps." */}
       <HowItWorksSection />
+
+      {/* 13. FAQ Section: "Questions, answered." */}
+      <FaqSection />
 
       {/* Spacing for bottom section drop shadow */}
       <div className="w-full h-14 bg-white" aria-hidden="true" />
