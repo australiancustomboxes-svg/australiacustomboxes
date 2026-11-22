@@ -13,3 +13,6 @@ export * from "./BoxStylesSection";
 export * from "./IndustriesSection";
 export * from "./WhyACBSection";
 export * from "./SustainabilitySection";
+export * from "../PortfolioSection";
+export * from "../QuoteCtaSection";
+export * from "../CustomisationSection";

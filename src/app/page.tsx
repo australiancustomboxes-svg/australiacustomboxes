@@ -7,6 +7,9 @@ import {
   IndustriesSection,
   WhyACBSection,
   SustainabilitySection,
+  PortfolioSection,
+  QuoteCtaSection,
+  CustomisationSection,
 } from "@/components/home";
 
 export default function Home() {
@@ -35,6 +38,15 @@ export default function Home() {
 
       {/* 8. Sustainability Section: "Better packaging. Better future." */}
       <SustainabilitySection />
+
+      {/* 9. Portfolio Section: "Packaging made for brands like yours." */}
+      <PortfolioSection />
+
+      {/* 10. Quote CTA Section: "Ready to create packaging your customers will remember?" */}
+      <QuoteCtaSection />
+
+      {/* 11. Customisation Section: "Make Your Paperboard Boxes uniquely Yours." */}
+      <CustomisationSection />
 
       {/* Spacing for bottom section drop shadow */}
       <div className="w-full h-14 bg-white" aria-hidden="true" />

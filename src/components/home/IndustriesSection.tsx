@@ -226,11 +226,11 @@ export const IndustriesSection: React.FC = () => {
         </div>
 
         {/* TABLET / MOBILE View (<lg) — Horizontal swipeable row */}
-        <div className="lg:hidden flex gap-5 overflow-x-auto pb-4 scrollbar-none snap-x snap-mandatory -mx-4 px-4 sm:-mx-6 sm:px-6">
+        <div className="lg:hidden flex gap-4 sm:gap-5 overflow-x-auto pb-4 scrollbar-none snap-x snap-mandatory -mx-6 px-6 sm:-mx-8 sm:px-8">
           {industriesData.map((item) => (
             <div
               key={item.id}
-              className="w-[85vw] max-w-[340px] sm:max-w-[380px] flex-shrink-0 snap-start"
+              className="w-[82vw] max-w-[320px] sm:max-w-[360px] flex-shrink-0 snap-center"
             >
               <IndustryCard item={item} />
             </div>

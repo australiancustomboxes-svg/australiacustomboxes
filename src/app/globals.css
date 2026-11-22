@@ -16,22 +16,27 @@
   --font-plus-jakarta-sans: var(--font-plus-jakarta-sans);
 
   /* Primary Navy Blues */
-  --color-navy: #082e63;
+  --color-navy: #0a3974;
   --color-navy-dark: #041f49;
-  --color-navy-light: #0a3974;
+  --color-navy-light: #082e63;
   --color-action-blue: #1976d2;
+  --color-ink: #082e63;
+  --color-ink-deep: #041f49;
 
   /* Australian Gold & Accents */
-  --color-gold: #f2b329;
+  --color-gold: #f6ca65;
   --color-gold-warm: #f2be44;
   --color-gold-light: #f6ca65;
   --color-gold-ochre: #b5882d;
   --color-gold-deep: #986400;
+  --color-gold-accent: #f2b329;
+  --color-amber: #986400;
 
   /* Ice, Slate & Soft Neutrals */
   --color-ice: #f5f8ff;
   --color-slate-soft: #dce4ef;
   --color-periwinkle: #c5d0e8;
+  --color-tile: #f4f7fb;
 
   /* Semantic Status Colors */
   --color-success: #4caf50;
