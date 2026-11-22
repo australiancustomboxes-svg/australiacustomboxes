@@ -10,6 +10,7 @@ import {
 import { siteConfig } from "@/config/site";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/Footer";
+import { MobileBottomNav } from "@/components/navigation/MobileBottomNav";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -171,6 +172,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <MobileBottomNav />
       </body>
     </html>
   );

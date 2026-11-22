@@ -54,22 +54,22 @@ export const QuoteCtaSection: React.FC = () => {
           </p>
 
           {/* Buttons row */}
-          <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
+          <div className="mt-4 sm:mt-5 flex flex-wrap items-center gap-2.5 sm:gap-3">
             {/* Primary Button: "Get a Free Quote" */}
             <Link
               href="/get-a-quote"
-              className="group h-[48px] sm:h-[50px] w-full sm:w-[205px] rounded-full bg-[#082E63] text-white font-semibold text-[14px] sm:text-[14.5px] leading-[22px] tracking-[0.01em] pl-5 sm:pl-6 pr-1.5 flex items-center justify-between transition-colors hover:bg-[#041F49] shadow-sm select-none"
+              className="group h-[42px] sm:h-[50px] w-auto sm:w-[205px] rounded-full bg-[#082E63] text-white font-semibold text-[13px] sm:text-[14.5px] leading-[22px] tracking-[0.01em] pl-4 sm:pl-6 pr-1.5 flex items-center justify-between gap-3 transition-colors hover:bg-[#041F49] shadow-sm select-none"
               style={{
                 fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
               }}
             >
               <span>Get a Free Quote</span>
               <div
-                className="w-[36px] h-[36px] rounded-full bg-[#F2B329] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                className="w-[30px] sm:w-[36px] h-[30px] sm:h-[36px] rounded-full bg-[#F2B329] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 aria-hidden="true"
               >
                 <ArrowRight
-                  className="w-[15px] h-[15px] text-[#041F49] -rotate-45"
+                  className="w-[14px] sm:w-[15px] h-[14px] sm:h-[15px] text-[#041F49] -rotate-45"
                   strokeWidth={1.5}
                 />
               </div>
@@ -78,7 +78,7 @@ export const QuoteCtaSection: React.FC = () => {
             {/* Secondary Button: "Request a Sample" */}
             <Link
               href="/request-a-sample"
-              className="h-[48px] sm:h-[50px] w-full sm:w-[180px] rounded-full bg-transparent ring-[1.5px] ring-inset ring-[#041F49] text-[#041F49] font-semibold text-[14px] sm:text-[14.5px] leading-[22px] tracking-[0.01em] px-[24px] flex items-center justify-center transition-colors hover:bg-[#041F49]/5 select-none"
+              className="h-[42px] sm:h-[50px] w-auto sm:w-[180px] rounded-full bg-transparent ring-[1.5px] ring-inset ring-[#041F49] text-[#041F49] font-semibold text-[13px] sm:text-[14.5px] leading-[22px] tracking-[0.01em] px-4 sm:px-[24px] flex items-center justify-center transition-colors hover:bg-[#041F49]/5 select-none"
               style={{
                 fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif",
               }}

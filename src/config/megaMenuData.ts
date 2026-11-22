@@ -328,7 +328,20 @@ export function getAllMegaMenuSlugs(): string[] {
     "track-order",
     "contact-us",
     "free-samples",
+    "get-a-quote",
+    "pricing",
+    "eco-packaging",
+    "about-us",
   ].forEach((s) => slugs.add(s));
+
+  // Add alias routes without "custom-" prefix (e.g. /burger-boxes, /mailer-boxes, /food-boxes)
+  const currentSlugs = Array.from(slugs);
+  currentSlugs.forEach((s) => {
+    if (s.startsWith("custom-")) {
+      const alias = s.replace(/^custom-/, "");
+      if (alias) slugs.add(alias);
+    }
+  });
 
   return Array.from(slugs);
 }

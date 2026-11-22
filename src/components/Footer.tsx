@@ -22,14 +22,14 @@ export const Footer: React.FC = () => {
 
   return (
     <footer
-      className="w-full bg-[#041F49] text-white select-none"
+      className="w-full bg-[#041F49] text-white select-none pb-20 lg:pb-0"
       style={{ fontFamily: "var(--font-libre-franklin), 'Libre Franklin', sans-serif" }}
     >
-      <div className="mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-12 xl:px-16 pt-16 sm:pt-20">
+      <div className="mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-12 xl:px-16 pt-8 sm:pt-10">
         {/* ════════════════════════════════════════════════════════════════
             TOP ROW: Brand Info + 4 Link Columns
            ════════════════════════════════════════════════════════════════ */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-8 sm:pb-10">
           {/* Brand Info (Span 4) */}
           <div className="lg:col-span-4 max-w-[320px]">
             {/* Logo in White Pill/Card */}
@@ -194,14 +194,14 @@ export const Footer: React.FC = () => {
         {/* ════════════════════════════════════════════════════════════════
             MIDDLE ROW: Contact Links + Newsletter Subscription Bar
            ════════════════════════════════════════════════════════════════ */}
-        <div className="border-t border-white/10 py-8 sm:py-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+        <div className="border-t border-white/10 py-4 sm:py-5 flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6">
           {/* Left: 3 Feature Links */}
-          <div className="flex flex-wrap items-center gap-6 sm:gap-8 text-[13.5px] text-white/80">
+          <div className="flex flex-wrap items-center gap-5 sm:gap-7 text-[13px] sm:text-[13.5px] text-white/80">
             <Link
               href="/contact-us"
               className="inline-flex items-center gap-2 hover:text-[#F2B329] transition-colors font-medium"
             >
-              <Phone className="w-4 h-4 text-[#F2B329]" />
+              <Phone className="w-3.5 h-3.5 text-[#F2B329]" />
               <span>Contact our team</span>
             </Link>
 
@@ -209,25 +209,25 @@ export const Footer: React.FC = () => {
               href="/get-a-quote"
               className="inline-flex items-center gap-2 hover:text-[#F2B329] transition-colors font-medium"
             >
-              <Mail className="w-4 h-4 text-[#F2B329]" />
+              <Mail className="w-3.5 h-3.5 text-[#F2B329]" />
               <span>Request a quote</span>
             </Link>
 
             <div className="inline-flex items-center gap-2 text-white/70 font-light select-none">
-              <ShieldCheck className="w-4 h-4 text-[#F2B329]" />
+              <ShieldCheck className="w-3.5 h-3.5 text-[#F2B329]" />
               <span>Packaging for Australian brands</span>
             </div>
           </div>
 
           {/* Right: Newsletter Signup Form */}
-          <div className="lg:max-w-[420px] w-full">
-            <p className="text-white/75 text-[13px] font-light mb-2.5">
+          <div className="lg:max-w-[400px] w-full">
+            <p className="text-white/75 text-[12px] sm:text-[12.5px] font-light mb-1.5">
               Get packaging tips and exclusive discounts in your inbox.
             </p>
 
             <form
               onSubmit={handleSubscribe}
-              className="relative flex items-center rounded-full bg-[#082E63] border border-white/20 p-1 pl-4 focus-within:border-[#F2B329] transition-colors shadow-inner"
+              className="relative flex items-center rounded-full bg-[#082E63] border border-white/20 p-0.5 pl-3.5 focus-within:border-[#F2B329] transition-colors shadow-inner"
             >
               <input
                 type="email"
@@ -235,11 +235,11 @@ export const Footer: React.FC = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email address"
-                className="flex-1 bg-transparent text-white text-[13px] placeholder:text-white/40 outline-none pr-2 min-w-0 font-light"
+                className="flex-1 bg-transparent text-white text-[12.5px] placeholder:text-white/40 outline-none pr-2 min-w-0 font-light"
               />
               <button
                 type="submit"
-                className="shrink-0 bg-[#F2B329] hover:bg-[#e0a424] text-[#041F49] font-bold text-[12.5px] px-4 py-2 rounded-full inline-flex items-center gap-1.5 transition-transform active:scale-95 shadow-sm cursor-pointer"
+                className="shrink-0 bg-[#F2B329] hover:bg-[#e0a424] text-[#041F49] font-bold text-[12px] px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5 transition-transform active:scale-95 shadow-sm cursor-pointer"
               >
                 <span>{subscribed ? "Subscribed!" : "Subscribe"}</span>
                 <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -251,7 +251,7 @@ export const Footer: React.FC = () => {
         {/* ════════════════════════════════════════════════════════════════
             BOTTOM ROW: Copyright + Payment Logos + Social Icons
            ════════════════════════════════════════════════════════════════ */}
-        <div className="border-t border-white/10 py-6 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="border-t border-white/10 py-3.5 sm:py-4 flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Copyright Notice */}
           <div className="text-white/50 text-[12px] sm:text-[12.5px] font-light text-center md:text-left">
             © 2026 Australian Custom Boxes. All rights reserved.

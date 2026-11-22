@@ -38,11 +38,14 @@ interface PageContext {
 }
 
 function resolvePageContext(slug: string): PageContext {
+  const norm = slug.replace(/^custom-/, "");
+
   // 1. Check if it's a top-level category column
   for (const cat of Object.values(megaMenuData)) {
     for (const col of cat.cols) {
       const colSlug = col.href.replace(/^\//, "").replace(/\/$/, "");
-      if (colSlug === slug) {
+      const colNorm = colSlug.replace(/^custom-/, "");
+      if (colSlug === slug || colNorm === norm) {
         return {
           title: col.title,
           categoryTitle: cat.label,
@@ -67,7 +70,8 @@ function resolvePageContext(slug: string): PageContext {
       // 2. Check if it's a sub-item
       for (const item of col.items) {
         const itemSlug = item.href.replace(/^\//, "").replace(/\/$/, "");
-        if (itemSlug === slug) {
+        const itemNorm = itemSlug.replace(/^custom-/, "");
+        if (itemSlug === slug || itemNorm === norm) {
           // Siblings excluding this item
           const siblings = col.items.filter((it) => it.href !== item.href);
           return {
@@ -117,29 +121,8 @@ export default async function CategoryPage({ params }: PageProps) {
 
   return (
     <main className="w-full bg-white select-none">
-      {/* 1. Breadcrumbs */}
-      <div className="w-full bg-[#F5F8FF] border-b border-[#041F49]/10 py-3.5">
-        <div className="mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-12">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#082E63]/60">
-            <Link href="/" className="hover:text-[#041F49] transition-colors">
-              Home
-            </Link>
-            <span>/</span>
-            {ctx.categoryTitle && ctx.categoryHref && (
-              <>
-                <Link href={ctx.categoryHref} className="hover:text-[#041F49] transition-colors">
-                  {ctx.categoryTitle}
-                </Link>
-                <span>/</span>
-              </>
-            )}
-            <span className="text-[#041F49] font-medium">{ctx.title}</span>
-          </nav>
-        </div>
-      </div>
-
-      {/* 2. Hero Header Section */}
-      <section className="w-full bg-[#041F49] text-white py-14 sm:py-20 lg:py-24 relative overflow-hidden">
+      {/* Hero Header Section with Integrated Top-Left Breadcrumbs */}
+      <section className="w-full bg-[#041F49] text-white pt-8 pb-14 sm:pt-10 sm:pb-20 lg:pt-12 lg:pb-24 relative overflow-hidden">
         {/* Subtle background glow */}
         <div
           className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-[#F2B329]/10 blur-3xl pointer-events-none"
@@ -147,6 +130,23 @@ export default async function CategoryPage({ params }: PageProps) {
         />
 
         <div className="mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-12 relative z-10">
+          {/* Top-Left Breadcrumbs inside Hero Banner */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-white/60 mb-6 sm:mb-8">
+            <Link href="/" className="hover:text-white transition-colors">
+              Home
+            </Link>
+            <span className="text-white/40">/</span>
+            {ctx.categoryTitle && ctx.categoryHref && (
+              <>
+                <Link href={ctx.categoryHref} className="hover:text-white transition-colors">
+                  {ctx.categoryTitle}
+                </Link>
+                <span className="text-white/40">/</span>
+              </>
+            )}
+            <span className="text-white/90 font-medium">{ctx.title}</span>
+          </nav>
+
           <div className="max-w-[780px]">
             {/* Pill Badge */}
             <div className="inline-flex items-center gap-2 bg-[#F2B329]/15 border border-[#F2B329]/30 text-[#F2B329] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-5">
@@ -334,17 +334,17 @@ export default async function CategoryPage({ params }: PageProps) {
       </section>
 
       {/* 6. Bottom Conversion CTA Band */}
-      <section className="w-full bg-[#041F49] text-white py-14 sm:py-16">
-        <div className="mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-12 flex flex-col md:flex-row md:items-center justify-between gap-8">
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-bold">Ready to order your {ctx.title.toLowerCase()}?</h2>
+      <section className="w-full bg-[#041F49] text-white pt-10 sm:pt-12 pb-6 sm:pb-8 border-b border-white/10">
+        <div className="mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8">
+          <div className="max-w-xl">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold">Ready to order your {ctx.title.toLowerCase()}?</h2>
             <p className="text-white/70 text-sm mt-1.5">
               Send us your dimensions or artwork. We reply with a detailed quote within 2 working hours.
             </p>
           </div>
           <Link
             href="/get-a-quote"
-            className="inline-flex items-center gap-2 bg-[#F2B329] hover:bg-[#e0a424] text-[#041F49] font-bold px-6 py-3.5 rounded-full shrink-0 transition-transform active:scale-95"
+            className="w-fit inline-flex items-center gap-2 bg-[#F2B329] hover:bg-[#e0a424] text-[#041F49] font-bold text-sm h-11 px-6 rounded-full shrink-0 transition-transform active:scale-95 shadow-sm"
           >
             <span>Get a Free Quote</span>
             <ArrowRight className="w-4 h-4" />
