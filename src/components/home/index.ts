@@ -20,3 +20,4 @@ export * from "../HowItWorksSection";
 export * from "../FaqSection";
 export * from "../CustomerReviewsSection";
 export * from "../BlogResourcesSection";
+export * from "../BrandBuilderCtaSection";

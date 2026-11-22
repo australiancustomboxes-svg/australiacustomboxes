@@ -14,6 +14,7 @@ import {
   FaqSection,
   CustomerReviewsSection,
   BlogResourcesSection,
+  BrandBuilderCtaSection,
 } from "@/components/home";
 
 export default function Home() {
@@ -64,8 +65,8 @@ export default function Home() {
       {/* 15. Packaging Resources / Blog Section: "Guides to help you package smarter." */}
       <BlogResourcesSection />
 
-      {/* Spacing for bottom section drop shadow */}
-      <div className="w-full h-14 bg-white" aria-hidden="true" />
+      {/* 16. Brand Builder CTA Section: "Let's build packaging that builds your brand." */}
+      <BrandBuilderCtaSection />
     </>
   );
 }

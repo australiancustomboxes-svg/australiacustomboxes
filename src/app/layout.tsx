@@ -9,6 +9,7 @@ import {
 } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import { Header } from "@/components/header";
+import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -169,6 +170,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <Header />
         <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

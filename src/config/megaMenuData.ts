@@ -321,5 +321,14 @@ export function getAllMegaMenuSlugs(): string[] {
     }
   });
 
+  // Additional essential website pages
+  [
+    "terms-and-conditions",
+    "privacy-policy",
+    "track-order",
+    "contact-us",
+    "free-samples",
+  ].forEach((s) => slugs.add(s));
+
   return Array.from(slugs);
 }
